@@ -1,0 +1,58 @@
+{
+  "navbar": {
+    "home": "Home",
+    "features": "Features",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "cta": "Request a demo",
+    "title": "AccounTech AI",
+    "description": "The smart ERP that automates all your accounting with AI."
+  },
+  "features": {
+    "title": "Key Features",
+    "intro": "The power of AI at the service of your accounting.",
+    "list": [
+      {
+        "title": "Automated accounting",
+        "description": "Generate your accounting entries in one click with AI."
+      },
+      {
+        "title": "Real-time tracking",
+        "description": "Access your dashboards and reports anytime, always up to date."
+      },
+      {
+        "title": "Data security",
+        "description": "Encryption, secure cloud hosting, and GDPR compliance."
+      },
+      {
+        "title": "Easy integration",
+        "description": "Connect to your tools: banking, invoicing, CRM, Excel, and more."
+      }
+    ]
+  },
+  "about": {
+    "title": "About Accountech AI",
+    "p1": "Accountech AI is an AI-powered accounting solution designed for SMEs, firms, accountants, and any business seeking modern bookkeeping.",
+    "p2": "Built by accounting professionals, Accountech AI makes accounting smoother, faster, and more accessible thanks to cutting-edge technology."
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Got a question or need a demo? Leave us a message.",
+    "submit": "Send Message"
+  },
+  "demo": {
+    "title": "Request a demo",
+    "description": "Fill out this form to receive a personalized demo.",
+    "companyPlaceholder": "Company name",
+    "emailPlaceholder": "Professional email",
+    "phonePlaceholder": "Phone number",
+    "messagePlaceholder": "Your needs or message",
+    "submitButton": "Send request",
+    "successMessage": "Message sent successfully!",
+    "errorMessage": "An error occurred. Please try again.",
+    "confirmationText": "✅ Thank you! Your request has been successfully sent. We will contact you soon.",
+    "note": "The online demo will be available very soon."
+  }
+}

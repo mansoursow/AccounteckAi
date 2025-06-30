@@ -1,0 +1,58 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "cta": "Demander une démo",
+    "title": "AccounTech AI",
+    "description": "L’ERP intelligent qui automatise toute votre comptabilité grâce à l’IA."
+  },
+  "features": {
+    "title": "Fonctionnalités clés",
+    "intro": "La puissance de l’intelligence artificielle au service de votre comptabilité.",
+    "list": [
+      {
+        "title": "Comptabilité automatisée",
+        "description": "Générez vos écritures comptables en un clic grâce à l’IA."
+      },
+      {
+        "title": "Suivi en temps réel",
+        "description": "Accédez à vos tableaux de bord et rapports à jour à tout moment."
+      },
+      {
+        "title": "Sécurité des données",
+        "description": "Chiffrement, hébergement cloud sécurisé et conformité RGPD."
+      },
+      {
+        "title": "Intégration simple",
+        "description": "Connectez vos outils : banque, facturation, CRM, Excel, etc."
+      }
+    ]
+  },
+  "about": {
+    "title": "À propos d'Accountech AI",
+    "p1": "Accountech AI est une solution de tenue de la comptabilité qui utilise l’intelligence artificielle, conçue pour les PME, les cabinets, les experts-comptables et toutes les entreprises.",
+    "p2": "Développée par des experts comptables, Accountech AI rend la comptabilité plus fluide, plus rapide et accessible à tous grâce à une technologie de pointe."
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Une question, une demande de démonstration ? Laissez-nous un message.",
+    "submit": "Envoyer le message"
+  },
+  "demo": {
+    "title": "Demander une démo",
+    "description": "Remplissez ce formulaire pour recevoir une démo personnalisée.",
+    "companyPlaceholder": "Nom de l'entreprise",
+    "emailPlaceholder": "Email professionnel",
+    "phonePlaceholder": "Téléphone",
+    "messagePlaceholder": "Votre besoin ou message",
+    "submitButton": "Envoyer la demande",
+    "successMessage": "Message envoyé avec succès !",
+    "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
+    "confirmationText": "✅ Merci ! Votre demande a bien été envoyée. Nous vous contacterons bientôt.",
+    "note": "La démo en ligne sera disponible très bientôt."
+  }
+}
