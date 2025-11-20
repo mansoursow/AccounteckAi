@@ -43,16 +43,16 @@
     "submit": "Send Message"
   },
   "demo": {
-    "title": "Request a demo",
-    "description": "Fill out this form to receive a personalized demo.",
+    "title": "Access the Demo",
+    "description": "Click the button below to try the ERP.",
     "companyPlaceholder": "Company name",
     "emailPlaceholder": "Professional email",
     "phonePlaceholder": "Phone number",
     "messagePlaceholder": "Your needs or message",
-    "submitButton": "Send request",
+    "submitButton": "Try Now",
     "successMessage": "Message sent successfully!",
     "errorMessage": "An error occurred. Please try again.",
     "confirmationText": "✅ Thank you! Your request has been successfully sent. We will contact you soon.",
-    "note": "The online demo will be available very soon."
+    "note": "The demo is available instantly."
   }
 }

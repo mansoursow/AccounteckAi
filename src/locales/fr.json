@@ -43,16 +43,16 @@
     "submit": "Envoyer le message"
   },
   "demo": {
-    "title": "Demander une démo",
-    "description": "Remplissez ce formulaire pour recevoir une démo personnalisée.",
+    "title": "Accéder à la démo",
+    "description": "Cliquez sur le bouton ci-dessous pour essayer l’ERP.",
     "companyPlaceholder": "Nom de l'entreprise",
     "emailPlaceholder": "Email professionnel",
     "phonePlaceholder": "Téléphone",
     "messagePlaceholder": "Votre besoin ou message",
-    "submitButton": "Envoyer la demande",
+    "submitButton": "EEssayer maintenant",
     "successMessage": "Message envoyé avec succès !",
     "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
     "confirmationText": "✅ Merci ! Votre demande a bien été envoyée. Nous vous contacterons bientôt.",
-    "note": "La démo en ligne sera disponible très bientôt."
+    "note": "La démo est disponible immédiatement."
   }
 }
