@@ -54,5 +54,21 @@
     "errorMessage": "An error occurred. Please try again.",
     "confirmationText": "✅ Thank you! Your request has been successfully sent. We will contact you soon.",
     "note": "The demo is available instantly."
+  },
+  "footer": {
+    "directContact": "Direct contact",
+    "phone": "Phone",
+    "email": "Email",
+    "linkedin": "AccounTech AI on LinkedIn",
+    "partnership": "AccounTech AI works in professional collaboration with",
+    "partner": "ADOC Audit & Conseil",
+    "copyright": "All rights reserved"
+  },
+  "form": {
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Your message",
+    "success": "✅ Thank you! Your message has been successfully sent.",
+    "error": "❌ An error occurred. Please try again."
   }
 }
