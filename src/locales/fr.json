@@ -54,5 +54,19 @@
     "errorMessage": "Une erreur est survenue. Veuillez réessayer.",
     "confirmationText": "✅ Merci ! Votre demande a bien été envoyée. Nous vous contacterons bientôt.",
     "note": "La démo est disponible immédiatement."
+  },
+  "footer": {
+    "directContact": "Contact direct",
+    "linkedin": "AccounTech IA sur LinkedIn",
+    "partnership": "AccounTech IA est en relation professionnelle avec le cabinet",
+    "partner": "ADOC Audit & Conseil",
+    "copyright": "Tous droits réservés"
+  },
+  "form": {
+    "name": "Votre nom",
+    "email": "Votre email",
+    "message": "Votre message",
+    "success": "✅ Merci ! Votre message a bien été envoyé.",
+    "error": "❌ Une erreur est survenue. Veuillez réessayer."
   }
 }
