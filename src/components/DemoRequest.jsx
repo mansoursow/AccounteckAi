@@ -5,7 +5,7 @@ const DemoRequest = () => {
   const { t } = useTranslation();
 
   const handleClick = () => {
-    window.location.href = "https://accountech-frontend.onrender.com/";
+    window.location.href = "https://sccountechia.com/login";
   };
 
   return (
