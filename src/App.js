@@ -1,22 +1,8 @@
 import "./App.css";
-import "./i18n"; // 👈 à ajouter ici
-
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Features from "./components/Features";
-import About from "./components/About";
-import Contact from "./components/Contact";
+import Landing from "./components/Landing";
 
 function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <Hero />
-      <Features />
-      <About />
-      <Contact />
-    </div>
-  );
+  return <Landing />;
 }
 
 export default App;
