@@ -7,6 +7,7 @@ import {
   Phone, Mail, MapPin, Clock, Menu, X,
   CloudUpload, Wallet, FileX, Banknote,
 } from 'lucide-react';
+import clientImage from '../assets/image.png';
 
 const C = {
   hero:   '#061E1C',
@@ -119,7 +120,7 @@ const G = `
 
   .hero-mockup { display:block; }
 
-  @media(max-width:1040px) { .hero-mockup { display:none !important; } }
+  @media(max-width:900px) { .hero-mockup { display:none !important; } }
   @media(max-width:960px)  { .g4 { grid-template-columns:1fr 1fr !important; } }
   @media(max-width:768px)  {
     .g2,.g3 { grid-template-columns:1fr !important; }
@@ -258,7 +259,7 @@ function ProductMockup() {
           {['#EF4444','#F59E0B','#22C55E'].map(c => <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c, opacity: .85 }} />)}
         </div>
         <div style={{ flex: 1, background: '#0C1A28', borderRadius: 5, padding: '4px 12px', fontSize: 11, color: 'rgba(255,255,255,.22)', fontFamily: 'monospace', letterSpacing: '.2px' }}>
-          app.accountech.ai/tableau-de-bord
+          https://sccountechia.com/company/dashboard
         </div>
         <div style={{ fontSize: 10, fontWeight: 700, color: C.teal, background: `${C.teal}16`, border: `1px solid ${C.teal}30`, padding: '3px 9px', borderRadius: 5, display: 'flex', alignItems: 'center', gap: 4 }}>
           <div style={{ width: 5, height: 5, borderRadius: '50%', background: C.teal, animation: 'glow 2s infinite' }} /> EN DIRECT
@@ -490,9 +491,9 @@ function Hero() {
       <div style={{ position: 'absolute', top: '8%', left: '5%',  width: 560, height: 560, borderRadius: '50%', background: `radial-gradient(circle,${C.teal}22,transparent 65%)`, filter: 'blur(50px)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: '5%', right: '8%', width: 420, height: 420, borderRadius: '50%', background: `radial-gradient(circle,${C.green}18,transparent 65%)`, filter: 'blur(50px)', pointerEvents: 'none' }} />
 
-      <div className="ct" style={{ position: 'relative', zIndex: 5, width: '100%', padding: '0 24px', display: 'flex', alignItems: 'center', gap: 56 }}>
+      <div className="ct" style={{ position: 'relative', zIndex: 5, width: '100%', padding: '0 24px', display: 'flex', alignItems: 'center', gap: 48 }}>
         {/* ── Text column ── */}
-        <div style={{ flex: '0 0 auto', width: 'min(520px, 100%)' }}>
+        <div style={{ flex: '0 0 auto', width: 'min(460px, 100%)' }}>
           <A>
             <span className="badge-white" style={{ marginBottom: 28 }}>
               <Brain size={13} /> La comptabilité nouvelle génération en Afrique
@@ -543,9 +544,65 @@ function Hero() {
         </div>
 
         {/* ── Mockup column ── */}
-        <div className="hero-mockup" style={{ flex: 1, minWidth: 0 }}>
+        <div className="hero-mockup" style={{ flex: '1 1 0', minWidth: 0, maxWidth: 720 }}>
           <A cls="lp-inr" delay={350}>
-            <ProductMockup />
+            {/* Outer glow ring */}
+            <div style={{
+              position: 'relative',
+              padding: 3,
+              borderRadius: 20,
+              background: `linear-gradient(135deg, ${C.teal}60, rgba(255,255,255,.08), ${C.green}40)`,
+              boxShadow: `0 0 60px ${C.teal}30, 0 60px 120px rgba(0,0,0,.6)`,
+              transform: 'perspective(1400px) rotateY(-8deg) rotateX(3deg)',
+              transition: 'transform .55s ease, box-shadow .55s ease',
+            }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'perspective(1400px) rotateY(-3deg) rotateX(1deg)';
+                e.currentTarget.style.boxShadow = `0 0 90px ${C.teal}45, 0 60px 120px rgba(0,0,0,.6)`;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'perspective(1400px) rotateY(-8deg) rotateX(3deg)';
+                e.currentTarget.style.boxShadow = `0 0 60px ${C.teal}30, 0 60px 120px rgba(0,0,0,.6)`;
+              }}
+            >
+              <div style={{ borderRadius: 18, overflow: 'hidden', background: '#162132' }}>
+                {/* Chrome bar */}
+                <div style={{
+                  background: '#0f1c2e',
+                  padding: '12px 18px',
+                  display: 'flex', alignItems: 'center', gap: 12,
+                  borderBottom: '1px solid rgba(255,255,255,.06)',
+                }}>
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    {['#EF4444','#F59E0B','#22C55E'].map(c => (
+                      <div key={c} style={{ width: 12, height: 12, borderRadius: '50%', background: c }} />
+                    ))}
+                  </div>
+                  <div style={{
+                    flex: 1, background: '#162132', borderRadius: 6,
+                    padding: '5px 14px', fontSize: 12, color: 'rgba(255,255,255,.28)',
+                    fontFamily: 'monospace', letterSpacing: '.2px',
+                  }}>
+                    https://sccountechia.com/company/dashboard
+                  </div>
+                  <div style={{
+                    fontSize: 11, fontWeight: 700, color: C.teal,
+                    background: `${C.teal}18`, border: `1px solid ${C.teal}35`,
+                    padding: '4px 11px', borderRadius: 6,
+                    display: 'flex', alignItems: 'center', gap: 5,
+                  }}>
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: C.teal, animation: 'glow 2s infinite' }} />
+                    EN DIRECT
+                  </div>
+                </div>
+                {/* Dashboard screenshot */}
+                <img
+                  src={clientImage}
+                  alt="Tableau de bord AccounTech AI"
+                  style={{ display: 'block', width: '100%', height: 'auto', maxHeight: 520, objectFit: 'cover', objectPosition: 'top' }}
+                />
+              </div>
+            </div>
           </A>
         </div>
       </div>
