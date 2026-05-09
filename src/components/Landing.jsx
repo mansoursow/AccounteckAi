@@ -1254,13 +1254,13 @@ function TemoignagesVideo() {
         <A>
           <div style={{ maxWidth: 820, margin: '0 auto' }}>
             {/* Video card */}
-            <div style={{ borderRadius: 24, overflow: 'hidden', boxShadow: '0 24px 80px rgba(0,0,0,0.18)', border: `1px solid ${C.border}`, background: '#000', position: 'relative' }}>
-              <video
-                style={{ width: '100%', display: 'block', maxHeight: 520 }}
-                src="/mass15.mp4"
-                controls
-                playsInline
-                preload="metadata"
+            <div style={{ borderRadius: 24, overflow: 'hidden', boxShadow: '0 24px 80px rgba(0,0,0,0.18)', border: `1px solid ${C.border}`, background: '#000', position: 'relative', aspectRatio: '16/9' }}>
+              <iframe
+                style={{ width: '100%', height: '100%', display: 'block', border: 'none' }}
+                src="https://www.youtube.com/embed/LfRel6w5TwA?rel=0&modestbranding=1"
+                title="Témoignage AccounTech AI"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
             </div>
 
