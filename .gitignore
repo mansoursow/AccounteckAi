@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Fichiers lourds / locaux à ne pas versionner
+public/mass15.mp4
+AccounteckAi.rar
+.claude/

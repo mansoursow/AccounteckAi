@@ -1,3 +1,77 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt — AccounTech AI
+# https://accountech-ai.com
+
 User-agent: *
-Disallow:
+Allow: /
+Sitemap: https://accountech-ai.com/sitemap.xml
+
+# ── Moteurs de recherche classiques ──────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── OpenAI / ChatGPT ─────────────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# ── Google / Gemini ──────────────────────────────────────────────
+User-agent: Google-Extended
+Allow: /
+
+# ── Anthropic / Claude ───────────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# ── Perplexity AI ────────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── Meta / Llama ─────────────────────────────────────────────────
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ── Common Crawl (base de données utilisée par de nombreuses IA) ─
+User-agent: CCBot
+Allow: /
+
+# ── Autres IA ────────────────────────────────────────────────────
+User-agent: YouBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /

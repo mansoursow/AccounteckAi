@@ -6,7 +6,7 @@ const iconComponents = [Cpu, FileBarChart2, ShieldCheck, Zap];
 
 const Features = () => {
   const { t } = useTranslation();
-  const features = t("features.list", { returnObjects: true }); // 👈 retourne un tableau d'objets
+  const features = t("features.list", { returnObjects: true }); // retourne un tableau d'objets
 
   return (
     <section id="features" className="bg-[#f8f9fa] py-20 px-4 sm:px-6 lg:px-8">

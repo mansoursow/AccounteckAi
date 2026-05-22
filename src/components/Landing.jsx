@@ -2,12 +2,24 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Brain, FileCheck, Calculator, Mic, ReceiptText, MessageSquare,
   Zap, BarChart3, Shield, Layers, Globe, Lock,
-  FileText, Bot, CheckCheck, Check, Star, ArrowRight,
+  FileText, Bot, CheckCheck, Check, ArrowRight,
   Users, Building2, TrendingUp, Award,
   Phone, Mail, MapPin, Clock, Menu, X,
   CloudUpload, Wallet, FileX, Banknote,
 } from 'lucide-react';
 import clientImage from '../assets/image.png';
+import heroVideo   from '../assets/video.mp4';
+import mansourPhoto  from '../assets/mansour.png';
+import marcPhoto     from '../assets/j marc.jpg';
+import khadimPhoto   from '../assets/khadim toure.png';
+import logoAccountech from '../assets/logo.png';
+import logoAKM       from '../assets/AKM Audit & Conseil.webp';
+import logoAdoc      from '../assets/Adoc.jpg';
+import logoGA2C      from '../assets/GA2C.jpg';
+import logoDK        from '../assets/dktuning.webp';
+import flagSenegal   from '../assets/Drapeau senegal.webp';
+import flagCI        from '../assets/drapeau cote divoire.jpg';
+import flagMaroc     from '../assets/morocco-flag-png-large.png';
 
 const C = {
   hero:   '#061E1C',
@@ -33,12 +45,25 @@ const G = `
   html { scroll-behavior:smooth; }
   body { background:#fff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; -webkit-font-smoothing:antialiased; color:${C.text}; }
 
-  @keyframes float   { 0%,100%{transform:translateY(0);}  50%{transform:translateY(-10px);} }
-  @keyframes pulse   { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(.95);opacity:.75;} }
-  @keyframes blink   { 0%,100%{opacity:1;} 50%{opacity:0;} }
-  @keyframes shimmer { 0%{background-position:-200% center;} 100%{background-position:200% center;} }
-  @keyframes glow    { 0%,100%{box-shadow:0 0 6px ${C.teal}60;} 50%{box-shadow:0 0 18px ${C.teal}90;} }
-  @keyframes spin    { to{transform:rotate(360deg);} }
+  @keyframes float        { 0%,100%{transform:translateY(0);}  50%{transform:translateY(-10px);} }
+  @keyframes pulse        { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(.95);opacity:.75;} }
+  @keyframes blink        { 0%,100%{opacity:1;} 50%{opacity:0;} }
+  @keyframes shimmer      { 0%{background-position:-200% center;} 100%{background-position:200% center;} }
+  @keyframes glow         { 0%,100%{box-shadow:0 0 6px ${C.teal}60;} 50%{box-shadow:0 0 18px ${C.teal}90;} }
+  @keyframes spin         { to{transform:rotate(360deg);} }
+  @keyframes scroll-left  { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+
+  .carousel-track         { display:flex; width:max-content; animation:scroll-left 28s linear infinite; }
+  .carousel-track:hover   { animation-play-state:paused; }
+  .carousel-wrap          { overflow:hidden; position:relative; }
+  .carousel-wrap::before,
+  .carousel-wrap::after   {
+    content:''; position:absolute; top:0; bottom:0; width:100px; z-index:2; pointer-events:none;
+  }
+  .carousel-wrap::before       { left:0;  background:linear-gradient(to right, ${C.bgSoft}, transparent); }
+  .carousel-wrap::after        { right:0; background:linear-gradient(to left,  ${C.bgSoft}, transparent); }
+  .carousel-wrap-white::before { left:0;  background:linear-gradient(to right, ${C.bg}, transparent); }
+  .carousel-wrap-white::after  { right:0; background:linear-gradient(to left,  ${C.bg}, transparent); }
 
   .lp-in   { opacity:0; transform:translateY(22px); transition:opacity .65s ease, transform .65s ease; }
   .lp-in.v { opacity:1; transform:translateY(0); }
@@ -223,6 +248,12 @@ function CheckItem({ text, color = C.green, textColor }) {
   );
 }
 
+function LogoImg({ src, fallback, color }) {
+  const [err, setErr] = useState(false);
+  if (err) return <span style={{ fontSize: 12, fontWeight: 900, color, textAlign: 'center', lineHeight: 1.1, padding: '0 4px' }}>{fallback}</span>;
+  return <img src={src} alt={fallback} onError={() => setErr(true)} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 6 }} />;
+}
+
 // ─── Wave divider ─────────────────────────────────────────────────────────────
 function Wave({ from, to }) {
   return (
@@ -230,123 +261,6 @@ function Wave({ from, to }) {
       <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: 56 }}>
         <path d="M0,28 C360,56 720,0 1080,28 C1260,42 1380,14 1440,28 L1440,56 L0,56 Z" fill={to} />
       </svg>
-    </div>
-  );
-}
-
-// ─── Product mockup illustration ─────────────────────────────────────────────
-function ProductMockup() {
-  const bars = [42, 58, 38, 72, 52, 84, 66, 78, 55, 90, 70, 100];
-  const entries = [
-    { ref: 'VTE-1923', lib: "Vente — Amadou Sow SARL", mt: '480 000', c: C.teal },
-    { ref: 'ACH-2847', lib: 'Achat matériel bureau', mt: '125 000', c: C.green },
-    { ref: 'PAI-0541', lib: 'Salaire Mai 2025 · 8 emp.', mt: '1 840 000', c: '#6366F1' },
-  ];
-  return (
-    <div style={{
-      borderRadius: 14, overflow: 'hidden',
-      background: '#0C1A28',
-      boxShadow: '0 40px 100px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.07)',
-      transform: 'perspective(1100px) rotateY(-9deg) rotateX(4deg)',
-      transition: 'transform .5s ease',
-    }}
-      onMouseEnter={e => e.currentTarget.style.transform = 'perspective(1100px) rotateY(-4deg) rotateX(1deg)'}
-      onMouseLeave={e => e.currentTarget.style.transform = 'perspective(1100px) rotateY(-9deg) rotateX(4deg)'}
-    >
-      {/* Chrome bar */}
-      <div style={{ background: '#162132', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, borderBottom: '1px solid rgba(255,255,255,.06)' }}>
-        <div style={{ display: 'flex', gap: 5 }}>
-          {['#EF4444','#F59E0B','#22C55E'].map(c => <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c, opacity: .85 }} />)}
-        </div>
-        <div style={{ flex: 1, background: '#0C1A28', borderRadius: 5, padding: '4px 12px', fontSize: 11, color: 'rgba(255,255,255,.22)', fontFamily: 'monospace', letterSpacing: '.2px' }}>
-          https://sccountechia.com/company/dashboard
-        </div>
-        <div style={{ fontSize: 10, fontWeight: 700, color: C.teal, background: `${C.teal}16`, border: `1px solid ${C.teal}30`, padding: '3px 9px', borderRadius: 5, display: 'flex', alignItems: 'center', gap: 4 }}>
-          <div style={{ width: 5, height: 5, borderRadius: '50%', background: C.teal, animation: 'glow 2s infinite' }} /> EN DIRECT
-        </div>
-      </div>
-
-      <div style={{ display: 'flex' }}>
-        {/* Sidebar */}
-        <div style={{ width: 50, background: '#091524', padding: '14px 9px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, borderRight: '1px solid rgba(255,255,255,.05)', flexShrink: 0 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: GRAD, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
-            <span style={{ color: '#fff', fontSize: 14, fontWeight: 900 }}>A</span>
-          </div>
-          {[C.teal, '#6366F1', C.green, '#F59E0B', '#8B5CF6'].map((c, i) => (
-            <div key={i} style={{ width: 32, height: 32, borderRadius: 8, background: i === 0 ? `${C.teal}20` : 'rgba(255,255,255,.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: i === 0 ? `1px solid ${C.teal}35` : '1px solid rgba(255,255,255,.04)' }}>
-              <div style={{ width: 13, height: 13, borderRadius: 3, background: c, opacity: i === 0 ? 1 : .22 }} />
-            </div>
-          ))}
-        </div>
-
-        {/* Main */}
-        <div style={{ flex: 1, padding: '14px 15px', minWidth: 0 }}>
-          {/* Header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 13 }}>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 800, color: '#fff', letterSpacing: '-.2px' }}>Tableau de bord</div>
-              <div style={{ fontSize: 9, color: 'rgba(255,255,255,.28)', marginTop: 2 }}>Exercice 2025 · Mai</div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <div style={{ width: 26, height: 26, borderRadius: '50%', background: GRAD, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Brain size={13} color="#fff" />
-              </div>
-              <div style={{ fontSize: 9, fontWeight: 700, color: C.teal }}>Mansour actif</div>
-            </div>
-          </div>
-
-          {/* KPI row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 7, marginBottom: 12 }}>
-            {[
-              { l: "Chiffre d'affaires", v: '14,8M', u: 'FCFA', c: C.teal, t: '▲ 12%' },
-              { l: 'Trésorerie nette',   v:  '3,4M', u: 'FCFA', c: C.green, t: '▲ 5%' },
-              { l: 'Écritures IA',       v:   '247', u: 'validées', c: '#6366F1', t: 'ce mois' },
-            ].map(({ l, v, u, c, t }) => (
-              <div key={l} style={{ background: 'rgba(255,255,255,.035)', border: `1px solid ${c}22`, borderRadius: 9, padding: '8px 10px' }}>
-                <div style={{ fontSize: 8, color: 'rgba(255,255,255,.32)', marginBottom: 5, lineHeight: 1.3 }}>{l}</div>
-                <div style={{ fontSize: 16, fontWeight: 900, color: c, lineHeight: 1 }}>{v}</div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4, alignItems: 'center' }}>
-                  <span style={{ fontSize: 8, color: 'rgba(255,255,255,.2)' }}>{u}</span>
-                  <span style={{ fontSize: 8, color: c, fontWeight: 700, background: `${c}12`, padding: '1px 5px', borderRadius: 3 }}>{t}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bar chart */}
-          <div style={{ background: 'rgba(255,255,255,.025)', borderRadius: 9, padding: '10px 11px', marginBottom: 12, border: '1px solid rgba(255,255,255,.05)' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 9 }}>
-              <span style={{ fontSize: 9, color: 'rgba(255,255,255,.35)', fontWeight: 600 }}>Ventes mensuelles — FCFA</span>
-              <span style={{ fontSize: 9, color: C.teal }}>2025</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 44 }}>
-              {bars.map((h, i) => (
-                <div key={i} style={{ flex: 1, borderRadius: '2px 2px 0 0', height: `${h}%`, background: i === 11 ? GRAD : i >= 9 ? `${C.teal}50` : `${C.teal}22` }} />
-              ))}
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 5 }}>
-              {['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'].map((m, i) => (
-                i % 2 === 0 ? <span key={m} style={{ fontSize: 7, color: 'rgba(255,255,255,.18)' }}>{m}</span> : null
-              ))}
-            </div>
-          </div>
-
-          {/* Recent entries */}
-          <div>
-            <div style={{ fontSize: 8, fontWeight: 700, color: 'rgba(255,255,255,.28)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 7 }}>Dernières écritures IA</div>
-            {entries.map(({ ref, lib, mt, c }) => (
-              <div key={ref} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5, padding: '5px 8px', background: 'rgba(255,255,255,.02)', borderRadius: 7, border: '1px solid rgba(255,255,255,.04)' }}>
-                <div style={{ width: 5, height: 5, borderRadius: '50%', background: c, flexShrink: 0 }} />
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 9, color: 'rgba(255,255,255,.55)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{lib}</div>
-                </div>
-                <div style={{ fontSize: 9, fontWeight: 700, color: c, whiteSpace: 'nowrap' }}>{mt}</div>
-                <div style={{ fontSize: 8, color: C.teal, background: `${C.teal}14`, border: `1px solid ${C.teal}28`, padding: '1px 6px', borderRadius: 3, flexShrink: 0 }}>✓ IA</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
@@ -362,20 +276,48 @@ function CoordMap() {
       {Array.from({ length: 22 }, (_, i) => (
         <line key={`v${i}`} x1={i * 22} y1="0" x2={i * 22} y2="280" stroke={C.teal} strokeWidth=".5" opacity=".18" />
       ))}
-      {/* Dashed route */}
+      {/* Dashed routes */}
       <path d="M100,130 C180,80 280,180 340,160" stroke={C.teal} strokeWidth="1.5" fill="none" strokeDasharray="6,5" opacity=".45" />
-      {/* Dakar */}
+      <path d="M230,38 C180,70 140,100 100,130" stroke="#C1272D" strokeWidth="1.5" fill="none" strokeDasharray="6,5" opacity=".35" />
+
+      {/* ── Dakar (pulse) ── */}
       <circle cx="100" cy="130" r="10" fill={C.green} opacity=".9" />
-      <circle cx="100" cy="130" r="20" fill="none" stroke={C.green} strokeWidth="1.5" opacity=".45" />
-      <circle cx="100" cy="130" r="34" fill="none" stroke={C.green} strokeWidth=".8" opacity=".2" />
+      <circle cx="100" cy="130" r="10" fill="none" stroke={C.green} strokeWidth="2">
+        <animate attributeName="r"       from="10" to="38" dur="2.2s" begin="0s"   repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.7" to="0" dur="2.2s" begin="0s"   repeatCount="indefinite" />
+      </circle>
+      <circle cx="100" cy="130" r="10" fill="none" stroke={C.green} strokeWidth="1.2">
+        <animate attributeName="r"       from="10" to="38" dur="2.2s" begin="0.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.4" to="0" dur="2.2s" begin="0.8s" repeatCount="indefinite" />
+      </circle>
       <text x="118" y="126" fill={C.green} fontSize="14" fontWeight="800" fontFamily="system-ui,sans-serif">Dakar</text>
       <text x="118" y="142" fill="#94A3B8" fontSize="11" fontFamily="system-ui,sans-serif">Sénégal 🇸🇳</text>
-      {/* Abidjan */}
+
+      {/* ── Abidjan (pulse) ── */}
       <circle cx="340" cy="160" r="10" fill="#F59E0B" opacity=".9" />
-      <circle cx="340" cy="160" r="20" fill="none" stroke="#F59E0B" strokeWidth="1.5" opacity=".45" />
-      <circle cx="340" cy="160" r="34" fill="none" stroke="#F59E0B" strokeWidth=".8" opacity=".2" />
+      <circle cx="340" cy="160" r="10" fill="none" stroke="#F59E0B" strokeWidth="2">
+        <animate attributeName="r"       from="10" to="38" dur="2.2s" begin="0.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.7" to="0" dur="2.2s" begin="0.4s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="340" cy="160" r="10" fill="none" stroke="#F59E0B" strokeWidth="1.2">
+        <animate attributeName="r"       from="10" to="38" dur="2.2s" begin="1.2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.4" to="0" dur="2.2s" begin="1.2s" repeatCount="indefinite" />
+      </circle>
       <text x="358" y="156" fill="#F59E0B" fontSize="14" fontWeight="800" fontFamily="system-ui,sans-serif">Abidjan</text>
       <text x="358" y="172" fill="#94A3B8" fontSize="11" fontFamily="system-ui,sans-serif">Côte d'Ivoire 🇨🇮</text>
+
+      {/* ── Casablanca (pulse) ── */}
+      <circle cx="230" cy="38" r="10" fill="#C1272D" opacity=".9" />
+      <circle cx="230" cy="38" r="10" fill="none" stroke="#C1272D" strokeWidth="2">
+        <animate attributeName="r"       from="10" to="38" dur="2.2s" begin="0.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.7" to="0" dur="2.2s" begin="0.8s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="230" cy="38" r="10" fill="none" stroke="#C1272D" strokeWidth="1.2">
+        <animate attributeName="r"       from="10" to="38" dur="2.2s" begin="1.6s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.4" to="0" dur="2.2s" begin="1.6s" repeatCount="indefinite" />
+      </circle>
+      <text x="248" y="34" fill="#C1272D" fontSize="14" fontWeight="800" fontFamily="system-ui,sans-serif">Casablanca</text>
+      <text x="248" y="50" fill="#94A3B8" fontSize="11" fontFamily="system-ui,sans-serif">Maroc 🇲🇦</text>
       {/* Accent dots */}
       {[[200,145],[145,180],[270,120],[390,190]].map(([cx,cy],i) => (
         <circle key={i} cx={cx} cy={cy} r="3" fill={C.teal} opacity=".2" />
@@ -408,7 +350,7 @@ function Navbar() {
     { l: 'Problèmes',   h: '#problemes' },
     { l: 'Pour qui',    h: '#pour-qui' },
     { l: 'IA Mansour',  h: '#ia-mansour' },
-    { l: 'Comment ?',   h: '#comment' },
+    { l: 'Tarifs',      h: '#pricing' },
     { l: 'Partenaires', h: '#partenaires' },
     { l: 'Équipe',      h: '#equipe' },
   ];
@@ -424,9 +366,7 @@ function Navbar() {
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 66 }}>
           <a href="#hero" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <div style={{ width: 34, height: 34, borderRadius: 9, background: GRAD, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: '#fff', fontWeight: 900, fontSize: 18 }}>A</span>
-            </div>
+            <img src={logoAccountech} alt="AccounTech AI" style={{ width: 34, height: 34, borderRadius: 9, objectFit: 'contain', background:'#fff' }} />
             <span style={{ color: sc ? C.text : '#fff', fontWeight: 800, fontSize: 17, letterSpacing: '-.3px', transition: 'color .3s' }}>
               AccounTech <span style={{ color: C.teal }}>AI</span>
             </span>
@@ -475,47 +415,79 @@ function Navbar() {
 // HERO — 2 colonnes : texte | mockup
 // ═══════════════════════════════════════════════════════════════════════════════
 function Hero() {
-  const words = ['automatisée', 'intelligente', 'conforme SYSCOHADA'];
+  const words = ['conforme SYSCOHADA'];
   const tw = useTypewriter(words);
 
   return (
     <section id="hero" style={{
       minHeight: '100vh',
-      background: `radial-gradient(ellipse 130% 90% at 70% -10%, ${C.primary}BB, ${C.hero})`,
+      background: C.hero,
       display: 'flex', alignItems: 'center',
       paddingTop: 96, paddingBottom: 80, position: 'relative', overflow: 'hidden',
     }}>
+      {/* ── Vidéo background ── */}
+      <video autoPlay loop muted playsInline style={{
+        position: 'absolute', inset: 0, width: '100%', height: '100%',
+        objectFit: 'cover', opacity: 0.65, pointerEvents: 'none', zIndex: 0,
+      }}>
+        <source src={heroVideo} type="video/mp4" />
+      </video>
+      {/* Overlay semi-transparent : lisibilité du texte à gauche, vidéo visible à droite */}
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: `linear-gradient(to right, ${C.hero}BB 0%, ${C.hero}88 45%, ${C.hero}55 100%)`,
+      }} />
       {/* Dot grid overlay */}
-      <div className="bg-dots" style={{ position: 'absolute', inset: 0, opacity: .4, pointerEvents: 'none' }} />
+      <div className="bg-dots" style={{ position: 'absolute', inset: 0, opacity: .35, pointerEvents: 'none', zIndex: 2 }} />
       {/* Glow blobs */}
-      <div style={{ position: 'absolute', top: '8%', left: '5%',  width: 560, height: 560, borderRadius: '50%', background: `radial-gradient(circle,${C.teal}22,transparent 65%)`, filter: 'blur(50px)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '5%', right: '8%', width: 420, height: 420, borderRadius: '50%', background: `radial-gradient(circle,${C.green}18,transparent 65%)`, filter: 'blur(50px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '8%', left: '5%',  width: 560, height: 560, borderRadius: '50%', background: `radial-gradient(circle,${C.teal}22,transparent 65%)`, filter: 'blur(50px)', pointerEvents: 'none', zIndex: 2 }} />
+      <div style={{ position: 'absolute', bottom: '5%', right: '8%', width: 420, height: 420, borderRadius: '50%', background: `radial-gradient(circle,${C.green}18,transparent 65%)`, filter: 'blur(50px)', pointerEvents: 'none', zIndex: 2 }} />
 
       <div className="ct" style={{ position: 'relative', zIndex: 5, width: '100%', padding: '0 24px', display: 'flex', alignItems: 'center', gap: 48 }}>
         {/* ── Text column ── */}
         <div style={{ flex: '0 0 auto', width: 'min(460px, 100%)' }}>
+          {/* ── Badge + pills ── */}
           <A>
-            <span className="badge-white" style={{ marginBottom: 28 }}>
-              <Brain size={13} /> La comptabilité nouvelle génération en Afrique
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
+              <span className="badge-white">
+                <Brain size={13} /> La comptabilité nouvelle génération en Afrique
+              </span>
+              <span style={{
+                background: C.green, color: '#fff',
+                fontSize: 11, fontWeight: 800, padding: '4px 12px',
+                borderRadius: 20, letterSpacing: '.6px', textTransform: 'uppercase',
+              }}>GRATUIT</span>
+              <span style={{
+                background: `${C.teal}22`, border: `1px solid ${C.teal}55`,
+                color: C.tealLt, fontSize: 11, fontWeight: 700,
+                padding: '4px 12px', borderRadius: 20, letterSpacing: '.3px',
+              }}>Accès immédiat</span>
+            </div>
           </A>
+
+          {/* ── H1 ── */}
           <A delay={80}>
             <h1 style={{ fontSize: 'clamp(34px,5vw,60px)', fontWeight: 900, color: '#fff', lineHeight: 1.1, letterSpacing: '-1.2px', marginBottom: 22 }}>
               La comptabilité{' '}
               <span style={{ color: C.tealLt }}>
                 {tw}<span style={{ animation: 'blink 1s step-end infinite' }}>|</span>
               </span>
-              <br />pour les PME<br />sénégalaises
+              <br />pour les PME<br />
+              <span style={{ color: C.tealLt }}>sénégalaises</span>
             </h1>
           </A>
+
+          {/* ── Description ── */}
           <A delay={160}>
             <p style={{ fontSize: 17, color: 'rgba(255,255,255,.68)', lineHeight: 1.8, marginBottom: 36, maxWidth: 480 }}>
               AccounTech AI connecte entreprises et cabinets via l'IA Mansour.
               Ventes, achats, paie, déclarations — 100% conforme SYSCOHADA et CGI 2025.
             </p>
           </A>
+
+          {/* ── CTAs ── */}
           <A delay={230}>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 36 }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 16 }}>
               <a href="https://sccountechia.com/login" className="btn-primary" style={{ fontSize: 16, padding: '15px 32px' }}>
                 Essayer gratuitement <ArrowRight size={18} />
               </a>
@@ -530,13 +502,60 @@ function Hero() {
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,.07)'; }}
               >Découvrir Mansour</a>
             </div>
+            {/* Lien démo vidéo */}
+            <a href="#demo" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              color: 'rgba(255,255,255,.65)', textDecoration: 'none',
+              fontSize: 13.5, fontWeight: 600, marginBottom: 20,
+              transition: 'color .2s',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.color = C.tealLt; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,.65)'; }}
+            >
+              <span style={{
+                width: 28, height: 28, borderRadius: '50%',
+                background: `${C.teal}30`, border: `1.5px solid ${C.teal}60`,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+              }}>
+                <svg width="10" height="12" viewBox="0 0 10 12" fill={C.tealLt}><path d="M0 0l10 6-10 6z"/></svg>
+              </span>
+              Voir la démo vidéo — 3 min
+            </a>
           </A>
+
+          {/* ── Check ── */}
           <A delay={300}>
-            <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap' }}>
-              {['100% SYSCOHADA', 'CGI 2025', 'Hébergé au Sénégal'].map(t => (
+            <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap', marginBottom: 28 }}>
+              {['100% SYSCOHADA'].map(t => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
                   <Check size={13} color={C.tealLt} />
                   <span style={{ color: 'rgba(255,255,255,.72)', fontSize: 13, fontWeight: 500 }}>{t}</span>
+                </div>
+              ))}
+            </div>
+          </A>
+          <A delay={370}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,.38)', textTransform: 'uppercase', letterSpacing: '.6px' }}>Disponible au</span>
+              {[
+                { img: flagSenegal, label: 'Sénégal',       accent: C.green },
+                { img: flagCI,      label: "Côte d'Ivoire", accent: '#F59E0B' },
+                { img: flagMaroc,   label: 'Maroc',          accent: '#C1272D' },
+              ].map(({ img, label, accent }) => (
+                <div key={label} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  background: 'rgba(255,255,255,.07)',
+                  border: `1px solid ${accent}40`,
+                  borderRadius: 30, padding: '5px 14px 5px 6px',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'background .2s, border-color .2s',
+                  cursor: 'default',
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.background = `${accent}18`; e.currentTarget.style.borderColor = `${accent}70`; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,.07)'; e.currentTarget.style.borderColor = `${accent}40`; }}
+                >
+                  <img src={img} alt={label} style={{ width: 26, height: 18, objectFit: 'cover', borderRadius: 4, boxShadow: '0 1px 4px rgba(0,0,0,.35)', flexShrink: 0 }} />
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#fff', whiteSpace: 'nowrap' }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -618,6 +637,159 @@ function Hero() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
+// VIDEO DEMO
+// ═══════════════════════════════════════════════════════════════════════════════
+const YT_ID = 'LfRel6w5TwA';
+
+function VideoDemo() {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <section id="demo" className="s" style={{ background: C.bgSoft, paddingTop: 72, paddingBottom: 72 }}>
+      <div className="ct">
+        <A>
+          <SHead
+            badge="Démo produit"
+            title="Voyez AccounTech AI en action"
+            sub="En 3 minutes, découvrez comment AccounTech AI automatise votre comptabilité de bout en bout."
+          />
+        </A>
+
+        {/* ── Lecteur vidéo ── */}
+        <A delay={120}>
+          <div style={{
+            position: 'relative', maxWidth: 900, margin: '0 auto',
+            borderRadius: 22, overflow: 'hidden',
+            boxShadow: `0 8px 16px rgba(0,0,0,.08), 0 40px 100px rgba(5,150,105,.12)`,
+            border: `1px solid ${C.border}`,
+          }}>
+            {!playing ? (
+              /* ── Miniature cliquable ── */
+              <div
+                onClick={() => setPlaying(true)}
+                style={{ position: 'relative', cursor: 'pointer', display: 'block', lineHeight: 0 }}
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${YT_ID}/maxresdefault.jpg`}
+                  alt="Démo AccounTech AI — logiciel ERP comptabilité"
+                  style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+                  onError={e => { e.target.src = `https://img.youtube.com/vi/${YT_ID}/hqdefault.jpg`; }}
+                />
+                {/* Overlay sombre */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(135deg, rgba(6,30,28,.6) 0%, rgba(6,30,28,.35) 100%)',
+                  display: 'flex', flexDirection: 'column',
+                  alignItems: 'center', justifyContent: 'center', gap: 18,
+                }}>
+                  {/* Bouton play animé */}
+                  <div style={{
+                    width: 88, height: 88, borderRadius: '50%',
+                    background: C.green,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: `0 0 0 18px ${C.green}28, 0 0 0 36px ${C.green}12`,
+                    animation: 'glow 2s infinite',
+                    transition: 'transform .2s',
+                  }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
+                  >
+                    <svg width="30" height="34" viewBox="0 0 30 34" fill="white">
+                      <path d="M2 2l26 15L2 32z"/>
+                    </svg>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ color: '#fff', fontSize: 17, fontWeight: 800, letterSpacing: '-.2px' }}>
+                      Voir la démo complète
+                    </div>
+                    <div style={{ color: 'rgba(255,255,255,.58)', fontSize: 13, marginTop: 5 }}>
+                      3 min · Aucune inscription requise
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* ── iFrame YouTube ── */
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, background: '#000' }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${YT_ID}?autoplay=1&rel=0&modestbranding=1&color=white`}
+                  title="Démo AccounTech AI"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                />
+              </div>
+            )}
+          </div>
+        </A>
+
+        {/* ── Carousel partenaires ── */}
+        <A delay={220}>
+          <div style={{ marginTop: 52 }}>
+            <p style={{ textAlign: 'center', fontSize: 12, fontWeight: 700, color: C.muted, textTransform: 'uppercase', letterSpacing: '.8px', marginBottom: 24 }}>
+              Ils utilisent AccounTech AI
+            </p>
+            <div className="carousel-wrap">
+              <div className="carousel-track">
+                {[
+                  { logo: logoAKM,  name: 'AKM Audit & Conseil', type: 'Cabinet d\'expertise comptable', flag: flagSenegal },
+                  { logo: logoGA2C, name: 'GA2C',                 type: 'Cabinet d\'expertise comptable', flag: flagSenegal },
+                  { logo: logoDK,   name: 'DK Tuning',            type: 'Société partenaire',             flag: flagSenegal },
+                  { logo: logoAdoc, name: 'Adoc Consulting',       type: 'Cabinet d\'expertise comptable', flag: flagSenegal },
+                  /* — copie pour boucle infinie — */
+                  { logo: logoAKM,  name: 'AKM Audit & Conseil', type: 'Cabinet d\'expertise comptable', flag: flagSenegal },
+                  { logo: logoGA2C, name: 'GA2C',                 type: 'Cabinet d\'expertise comptable', flag: flagSenegal },
+                  { logo: logoDK,   name: 'DK Tuning',            type: 'Société partenaire',             flag: flagSenegal },
+                  { logo: logoAdoc, name: 'Adoc Consulting',       type: 'Cabinet d\'expertise comptable', flag: flagSenegal },
+                ].map(({ logo, name, type, flag }, i) => (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 14,
+                    background: '#fff', border: `1px solid ${C.border}`,
+                    borderRadius: 16, padding: '14px 22px',
+                    marginRight: 20, flexShrink: 0,
+                    boxShadow: '0 2px 12px rgba(0,0,0,.05)',
+                    minWidth: 240,
+                  }}>
+                    {/* Logo */}
+                    <div style={{
+                      width: 52, height: 52, borderRadius: 12, flexShrink: 0,
+                      overflow: 'hidden', border: `1px solid ${C.border}`,
+                      background: C.bgGray,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <img src={logo} alt={name} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />
+                    </div>
+                    {/* Infos */}
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: C.text, whiteSpace: 'nowrap' }}>{name}</div>
+                      <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>{type}</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 5 }}>
+                        <img src={flag} alt="Sénégal" style={{ width: 16, height: 11, objectFit: 'cover', borderRadius: 2 }} />
+                        <span style={{ fontSize: 11, fontWeight: 600, color: C.green }}>Sénégal</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </A>
+
+        {/* ── CTA sous le carousel ── */}
+        <A delay={300}>
+          <div style={{ textAlign: 'center', marginTop: 44 }}>
+            <a href="https://sccountechia.com/login" className="btn-primary" style={{ fontSize: 15, padding: '14px 36px' }}>
+              Essayer gratuitement — c'est gratuit <ArrowRight size={16} />
+            </a>
+          </div>
+        </A>
+      </div>
+    </section>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
 // STATS
 // ═══════════════════════════════════════════════════════════════════════════════
 function StatItem({ target, suffix, label, Icon, color }) {
@@ -653,8 +825,8 @@ function Stats() {
 // ═══════════════════════════════════════════════════════════════════════════════
 function Problemes() {
   const items = [
-    { Icon: FileX,    color: '#EF4444', bg: '#FEF2F2', bd: '#FECACA30', num: '95%',  title: 'des PME sur Excel',          desc: 'Erreurs de saisie, historique non fiable, aucune vision financière en temps réel.' },
-    { Icon: Wallet,   color: '#D97706', bg: '#FFFBEB', bd: '#FDE68A30', num: '<15%', title: 'accèdent au crédit bancaire', desc: 'Dossiers comptables incomplets, impossibles à présenter aux banques.' },
+    { Icon: FileX,    color: '#EF4444', bg: '#FEF2F2', bd: '#FECACA30', num: '65%',  title: 'des PME sur Excel',          desc: 'Erreurs de saisie, historique non fiable, aucune vision financière en temps réel.' },
+    { Icon: Wallet,   color: '#D97706', bg: '#FFFBEB', bd: '#FDE68A30', num: '<20%', title: 'accèdent au crédit bancaire', desc: 'Dossiers comptables incomplets, impossibles à présenter aux banques.' },
     { Icon: FileText, color: '#6366F1', bg: '#EEF2FF', bd: '#C7D2FE30', num: '0',    title: 'outil SYSCOHADA simple',      desc: 'Logiciels complexes et coûteux, sans lien numérique entre entreprise et cabinet.' },
   ];
 
@@ -663,7 +835,7 @@ function Problemes() {
       {/* Large decorative background text */}
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontSize: 'clamp(120px,18vw,240px)', fontWeight: 900, color: 'rgba(239,68,68,.04)', letterSpacing: '-8px', whiteSpace: 'nowrap', pointerEvents: 'none', userSelect: 'none', zIndex: 0 }}>PROBLÈME</div>
       <div className="ct" style={{ position: 'relative', zIndex: 1 }}>
-        <A><SHead badge="Le constat" title="Pourquoi la comptabilité reste un frein" sub="Les PME sénégalaises font face à des obstacles structurels qui bloquent leur croissance." /></A>
+        <A><SHead badge="Le constat" title="Pourquoi la comptabilité reste un frein" sub="Les PME font face à des obstacles structurels qui bloquent leur croissance." /></A>
         <div className="g3">
           {items.map(({ Icon, color, bg, bd, num, title, desc }, i) => (
             <A key={title} delay={i * 110}>
@@ -873,7 +1045,7 @@ function Differenciateurs() {
     { num: '03', Icon: Banknote,   color: C.green,   title: 'Module paie sénégalais complet',     desc: 'CSS, IPRES, IR, TRIMF — tous les calculs du droit du travail automatisés.' },
     { num: '04', Icon: Mic,        color: '#8B5CF6', title: 'Interaction vocale avec Mansour',    desc: 'Unique sur le marché — posez vos questions par micro en français ou wolof.' },
     { num: '05', Icon: TrendingUp, color: '#F59E0B', title: 'Intégration Odoo ERP',              desc: 'Déversement direct des écritures validées vers Odoo pour les cabinets.' },
-    { num: '06', Icon: Globe,      color: C.teal,    title: 'Prix en FCFA, marché local',         desc: 'Conçu pour la réalité des PME sénégalaises. Support en français et wolof.' },
+    { num: '06', Icon: Globe,      color: C.teal,    title: 'Prix en FCFA, marché local',         desc: 'Conçu pour la réalité des PME. Support en français et wolof.' },
   ];
 
   return (
@@ -902,46 +1074,113 @@ function Differenciateurs() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// AVIS — section sombre avec grands guillemets décoratifs
+// PRICING
 // ═══════════════════════════════════════════════════════════════════════════════
-function Avis() {
-  const avis = [
-    { ini: 'MD', color: C.teal,   name: 'Marie Diallo',   role: 'Gérante · Tech Solutions SARL, Dakar',  txt: 'Mansour gère tout en quelques secondes. Enfin une solution qui connecte mon commerce à mon comptable sans paperasse.' },
-    { ini: 'AS', color: '#818CF8',name: 'Amadou Sow',     role: 'Expert-comptable · Cabinet Sow, Dakar', txt: 'Je ne fais plus que de la révision et du conseil. Gain de temps énorme sur la saisie — zéro erreur de déversement.' },
-    { ini: 'FN', color: '#A78BFA',name: 'Fatou Ndiaye',   role: 'Gérante · Distribution Plus, Thiès',    txt: 'Le module paie est bluffant. Bulletins, déclarations CSS et IPRES générés automatiquement pour mes 8 employés.' },
-    { ini: 'IB', color: '#FCD34D',name: 'Ibrahima Baldé', role: 'DAF · Groupe Baldé & Fils, Ziguinchor', txt: 'La précision IA sur les écritures d\'achat est impressionnante. Zéro erreur depuis 3 mois.' },
+function Pricing() {
+  const plans = [
+    {
+      name: 'Gratuit',
+      price: '0',
+      unit: 'FCFA / mois',
+      tag: 'Pour démarrer',
+      color: C.teal,
+      grad: `linear-gradient(135deg,${C.teal}18,${C.green}08)`,
+      highlight: false,
+      features: [
+        'ERP comptable complet (SYSCOHADA)',
+        'Gestion des ventes & achats',
+        'Dashboard chiffre d\'affaires',
+        'Rapprochement bancaire',
+        'Facturation PDF automatique',
+        'Lien entreprise ↔ cabinet',
+        'IA Mansour — assistant comptable',
+        'Accès multi-utilisateurs (2)',
+      ],
+      cta: 'Commencer gratuitement',
+      ctaHref: 'https://sccountechia.com/login',
+    },
+    {
+      name: 'Pro',
+      price: '19 800',
+      unit: 'FCFA / mois',
+      tag: 'Fonctionnalités avancées',
+      color: '#6366F1',
+      grad: 'linear-gradient(135deg,#6366F128,#8B5CF610)',
+      highlight: true,
+      features: [
+        'Tout le plan Gratuit inclus',
+        'Déclarations fiscales automatiques (CGI 2025)',
+        'Module de pointage des employés',
+        'Personnalisation des fonctionnalités',
+        'Module paie complet (CSS, IPRES, IR, TRIMF)',
+        'Export journaux multi-formats',
+        'Accès multi-utilisateurs illimité',
+        'Support prioritaire 24/7',
+      ],
+      cta: 'Essayer Pro',
+      ctaHref: 'https://sccountechia.com/login',
+    },
   ];
 
   return (
-    <section id="avis" className="s" style={{ background: C.dark2, position: 'relative', overflow: 'hidden' }}>
-      {/* Huge decorative quote */}
-      <div style={{ position: 'absolute', top: -40, left: 16, fontSize: 'clamp(180px,22vw,300px)', fontWeight: 900, color: 'rgba(255,255,255,.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none', fontFamily: 'Georgia,serif' }}>"</div>
-      <div style={{ position: 'absolute', bottom: -40, right: 16, fontSize: 'clamp(180px,22vw,300px)', fontWeight: 900, color: 'rgba(255,255,255,.025)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none', fontFamily: 'Georgia,serif', transform: 'rotate(180deg)' }}>"</div>
-
-      <div className="ct" style={{ position: 'relative', zIndex: 1 }}>
-        <A><SHead badge="Avis clients" title="Ils nous font confiance" sub="Des entreprises et cabinets sénégalais partagent leur expérience." light /></A>
-        <div className="g2">
-          {avis.map(({ ini, color, name, role, txt }, i) => (
-            <A key={name} delay={i * 90}>
-              <div style={{ background: 'rgba(255,255,255,.05)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,.09)', borderRadius: 18, padding: 28, height: '100%', transition: 'background .25s, transform .25s' }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,.09)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,.05)'; e.currentTarget.style.transform = 'none'; }}
+    <section id="pricing" className="s" style={{ background: C.bgGray }}>
+      <div className="ct">
+        <A><SHead badge="Tarifs" title="Simple, transparent, accessible" sub="L'ERP est gratuit. Passez Pro pour les déclarations fiscales automatiques et le module pointage." /></A>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 28, maxWidth: 780, margin: '0 auto' }}>
+          {plans.map(({ name, price, unit, tag, color, grad, highlight, features, cta, ctaHref }, i) => (
+            <A key={name} delay={i * 120}>
+              <div style={{
+                background: highlight ? '#fff' : '#fff',
+                border: highlight ? `2px solid ${color}` : `1px solid ${C.border}`,
+                borderRadius: 22, overflow: 'hidden', height: '100%',
+                boxShadow: highlight ? `0 20px 60px ${color}20` : '0 4px 20px rgba(0,0,0,.06)',
+                position: 'relative',
+                transition: 'transform .25s, box-shadow .25s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = highlight ? `0 28px 72px ${color}30` : `0 16px 48px rgba(0,0,0,.1)`; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = highlight ? `0 20px 60px ${color}20` : '0 4px 20px rgba(0,0,0,.06)'; }}
               >
-                <div style={{ display: 'flex', gap: 3, marginBottom: 18 }}>
-                  {[1,2,3,4,5].map(s => <Star key={s} size={14} fill={C.gold} color={C.gold} />)}
-                </div>
-                <p style={{ fontSize: 15, color: 'rgba(255,255,255,.7)', lineHeight: 1.82, fontStyle: 'italic', marginBottom: 24 }}>"{txt}"</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ width: 44, height: 44, borderRadius: '50%', flexShrink: 0, background: `${color}20`, border: `2px solid ${color}45`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 800, color }}>{ini}</div>
-                  <div>
-                    <div style={{ fontWeight: 700, color: '#fff', fontSize: 15 }}>{name}</div>
-                    <div style={{ color: 'rgba(255,255,255,.38)', fontSize: 13, marginTop: 2 }}>{role}</div>
+                {highlight && (
+                  <div style={{ position: 'absolute', top: 18, right: 18, background: color, color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 12px', borderRadius: 20, letterSpacing: '.3px' }}>
+                    RECOMMANDÉ
                   </div>
+                )}
+                <div style={{ background: grad, padding: '32px 30px 24px', borderBottom: `1px solid ${color}20` }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 10 }}>{tag}</div>
+                  <div style={{ fontSize: 28, fontWeight: 900, color: C.text, marginBottom: 4, letterSpacing: '-.5px' }}>{name}</div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                    <span style={{ fontSize: 42, fontWeight: 900, color, lineHeight: 1, letterSpacing: '-2px' }}>{price}</span>
+                    <span style={{ fontSize: 14, color: C.muted, fontWeight: 500 }}>{unit}</span>
+                  </div>
+                </div>
+                <div style={{ padding: '24px 30px 30px' }}>
+                  <div style={{ marginBottom: 24 }}>
+                    {features.map(f => <CheckItem key={f} text={f} color={color} />)}
+                  </div>
+                  <a href={ctaHref}
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                      background: highlight ? `linear-gradient(135deg,${color},#8B5CF6)` : `${color}14`,
+                      color: highlight ? '#fff' : color,
+                      padding: '13px 24px', borderRadius: 11, textDecoration: 'none',
+                      fontSize: 15, fontWeight: 700, border: highlight ? 'none' : `1.5px solid ${color}35`,
+                      transition: 'opacity .2s, transform .2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.opacity = '.88'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'none'; }}
+                  >
+                    {cta} <ArrowRight size={16} />
+                  </a>
                 </div>
               </div>
             </A>
           ))}
         </div>
+        <A delay={200}>
+          <p style={{ textAlign: 'center', marginTop: 28, fontSize: 13.5, color: C.muted }}>
+            Aucune carte bancaire requise pour le plan gratuit · Résiliable à tout moment · Prix en FCFA
+          </p>
+        </A>
       </div>
     </section>
   );
@@ -952,14 +1191,15 @@ function Avis() {
 // ═══════════════════════════════════════════════════════════════════════════════
 function CabinetsPartenaires() {
   const pays = [
-    { flag: '🇸🇳', nom: 'Sénégal', tag: 'Hub principal · Marché de lancement', color: C.green, bgGrad: `linear-gradient(135deg,${C.green}16,${C.teal}08)`, desc: 'Présents à Dakar, Thiès, Saint-Louis et au-delà. Nous accompagnons PME et cabinets comptables sénégalais depuis le lancement.', stats: [{ v: '50+', l: 'cabinets actifs' }, { v: '2025', l: 'depuis' }], points: ['SYSCOHADA — Plan comptable OHADA natif','CGI 2025 et retenues à la source intégrés','Module paie sénégalais (CSS, IPRES, IR, TRIMF)','Support en wolof et en français','Données hébergées à Dakar'] },
-    { flag: '🇨🇮', nom: "Côte d'Ivoire", tag: 'Abidjan · Expansion en cours', color: '#F59E0B', bgGrad: 'linear-gradient(135deg,#F59E0B16,#F59E0B06)', desc: "AccounTech AI s'étend à la Côte d'Ivoire avec des adaptations au contexte fiscal ivoirien, porté par notre expert basé à Abidjan.", stats: [{ v: '2025', l: 'lancement prévu' }, { v: 'OHADA', l: 'compatible' }], points: ['SYSCOHADA — Plan comptable OHADA natif','Code général des impôts ivoirien','Module paie adapté DGT Côte d\'Ivoire','Support en français','Référent local : Marc (Abidjan)'] },
+    { flagSrc: flagSenegal, nom: 'Sénégal', tag: 'Hub principal · Marché de lancement', color: C.green, bgGrad: `linear-gradient(135deg,${C.green}16,${C.teal}08)`, desc: 'Présents à Dakar, Thiès, Saint-Louis et au-delà. Nous accompagnons PME et cabinets comptables sénégalais depuis le lancement.', stats: [{ v: '5+', l: 'cabinets actifs' }, { v: '202', l: 'depuis' }], points: ['SYSCOHADA — Plan comptable OHADA natif','CGI 2025 et retenues à la source intégrés','Module paie sénégalais (CSS, IPRES, IR, TRIMF)','Support en wolof et en français','Données hébergées à Dakar'] },
+    { flagSrc: flagCI, nom: "Côte d'Ivoire", tag: 'Abidjan · Expansion en cours', color: '#F59E0B', bgGrad: 'linear-gradient(135deg,#F59E0B16,#F59E0B06)', desc: "AccounTech AI s'étend à la Côte d'Ivoire avec des adaptations au contexte fiscal ivoirien, porté par notre expert basé à Abidjan.", stats: [{ v: '2026', l: 'lancement prévu' }, { v: 'OHADA', l: 'compatible' }], points: ['SYSCOHADA — Plan comptable OHADA natif','Code général des impôts ivoirien','Module paie adapté DGT Côte d\'Ivoire','Support en français','Référent local : Marc (Abidjan)'] },
+    { flagSrc: flagMaroc, nom: 'Maroc', tag: 'Casablanca · Partenaire LYSO', color: '#C1272D', bgGrad: 'linear-gradient(135deg,#C1272D16,#C1272D06)', desc: "AccounTech AI entre sur le marché marocain grâce à notre partenaire LYSO (Lead Your Software), expert ERP basé à Casablanca. Facturation électronique et conformité FEG intégrées.", stats: [{ v: '2026', l: 'lancement' }, { v: 'FEG', l: 'compatible' }], points: ['Facturation électronique conforme DGI Maroc','Format d\'Échange Standardisé (FEG) natif','Intégration SAGE via LYSO','Code Général des Impôts marocain','Référent local : M. Jdiaa — LYSO Casablanca'] },
   ];
 
   return (
     <section id="partenaires" className="s" style={{ background: C.bg, position: 'relative', overflow: 'hidden' }}>
       <div className="ct" style={{ position: 'relative', zIndex: 1 }}>
-        <A><SHead badge="Réseau partenaire" title="Présents au Sénégal & en Côte d'Ivoire" sub="AccounTech AI se déploie dans l'espace OHADA pour accompagner les PME d'Afrique de l'Ouest." /></A>
+        <A><SHead badge="Réseau partenaire" title="Présents au Sénégal, en Côte d'Ivoire & au Maroc" sub="AccounTech AI se déploie en Afrique de l'Ouest et au Maghreb pour accompagner les PME de la région." /></A>
 
         {/* Map illustration */}
         <A style={{ marginBottom: 40 }}>
@@ -968,13 +1208,13 @@ function CabinetsPartenaires() {
           </div>
         </A>
 
-        <div className="g2">
-          {pays.map(({ flag, nom, tag, color, bgGrad, desc, stats, points }, i) => (
+        <div className="g3">
+          {pays.map(({ flagSrc, nom, tag, color, bgGrad, desc, stats, points }, i) => (
             <A key={nom} cls={i === 0 ? 'lp-inl' : 'lp-inr'} delay={i * 100}>
               <div className="card" style={{ overflow: 'hidden', height: '100%' }}>
                 <div style={{ background: bgGrad, padding: '28px 28px 22px', borderBottom: `1px solid ${color}18` }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 14 }}>
-                    <span style={{ fontSize: 46, lineHeight: 1 }}>{flag}</span>
+                    <img src={flagSrc} alt={nom} style={{ width: 52, height: 36, objectFit: 'cover', borderRadius: 6, boxShadow: '0 2px 8px rgba(0,0,0,.12)', flexShrink: 0 }} />
                     <div>
                       <div style={{ fontSize: 22, fontWeight: 900, color: C.text, letterSpacing: '-.3px' }}>{nom}</div>
                       <div style={{ fontSize: 13, color, fontWeight: 700, marginTop: 3 }}>{tag}</div>
@@ -997,6 +1237,95 @@ function CabinetsPartenaires() {
               </div>
             </A>
           ))}
+        </div>
+
+        {/* Cabinets partenaires */}
+        <A style={{ marginTop: 60 }}>
+          <div style={{ textAlign: 'center', marginBottom: 36 }}>
+            <span className="badge-teal">Cabinets partenaires</span>
+            <h3 style={{ marginTop: 14, fontSize: 'clamp(22px,3vw,32px)', fontWeight: 800, color: C.text, letterSpacing: '-.3px' }}>
+              Ils nous font confiance
+            </h3>
+            <p style={{ marginTop: 10, fontSize: 15, color: C.muted, maxWidth: 540, margin: '10px auto 0', lineHeight: 1.65 }}>
+              AccounTech AI est déployé dans des cabinets et sociétés partenaires reconnus au Sénégal, en Côte d'Ivoire et au Maroc.
+            </p>
+          </div>
+        </A>
+        {/* ── Carousel infini des partenaires ── */}
+        <div className="carousel-wrap carousel-wrap-white" style={{ margin: '0 -24px' }}>
+          <div className="carousel-track" style={{ alignItems: 'stretch', gap: 0 }}>
+            {[
+              { abbr: 'AKM',  logo: logoAKM,  name: 'AKM Audit & Conseil',      flagImg: flagSenegal, color: C.teal,    pays: 'Sénégal', desc: 'Cabinet d\'audit et de conseil basé à Dakar. Expert en normes SYSCOHADA et en accompagnement des PME sénégalaises.' },
+              { abbr: 'GA2C', logo: logoGA2C,  name: 'GA2C',                      flagImg: flagSenegal, color: C.green,   pays: 'Sénégal', desc: 'Gestion, Audit, Comptabilité & Conseil — cabinet spécialisé dans l\'accompagnement des entreprises en croissance.' },
+              { abbr: 'DKT',  logo: logoDK,    name: 'DK Tuning',                 flagImg: flagSenegal, color: '#F59E0B', pays: 'Sénégal', desc: 'Société partenaire basée au Sénégal. AccounTech AI accompagne DK Tuning dans la gestion et la digitalisation de son activité.' },
+              { abbr: 'AAC',  logo: logoAdoc,  name: 'Adoc Audit & Conseil',      flagImg: flagSenegal, color: '#6366F1', pays: 'Sénégal', desc: 'Cabinet d\'audit et de conseil basé au Sénégal. Partenaire référent AccounTech AI pour l\'audit et le conseil.' },
+              { abbr: 'LYSO', logo: null,       name: 'LYSO — Lead Your Software', flagImg: flagMaroc,   color: '#C1272D', pays: 'Maroc',   desc: 'Éditeur ERP marocain basé à Casablanca. Partenaire exclusif d\'AccounTech AI pour le déploiement au Maroc — facturation électronique, FEG et intégration SAGE.', contact: { nom: 'M. Jdiaa', email: 'jdia@trisoft-maroc.com', email2: 'jdiatrisoft@gmail.com', adresse: 'Centre Riad 61, Angle Avenue LALLA YACOUT et MOSTAFA EL MAANI, N°69 2ème étage, Casablanca' } },
+              /* — copie pour boucle infinie — */
+              { abbr: 'AKM2',  logo: logoAKM,  name: 'AKM Audit & Conseil',      flagImg: flagSenegal, color: C.teal,    pays: 'Sénégal', desc: 'Cabinet d\'audit et de conseil basé à Dakar. Expert en normes SYSCOHADA et en accompagnement des PME sénégalaises.' },
+              { abbr: 'GA2C2', logo: logoGA2C,  name: 'GA2C',                      flagImg: flagSenegal, color: C.green,   pays: 'Sénégal', desc: 'Gestion, Audit, Comptabilité & Conseil — cabinet spécialisé dans l\'accompagnement des entreprises en croissance.' },
+              { abbr: 'DKT2',  logo: logoDK,    name: 'DK Tuning',                 flagImg: flagSenegal, color: '#F59E0B', pays: 'Sénégal', desc: 'Société partenaire basée au Sénégal. AccounTech AI accompagne DK Tuning dans la gestion et la digitalisation de son activité.' },
+              { abbr: 'AAC2',  logo: logoAdoc,  name: 'Adoc Audit & Conseil',      flagImg: flagSenegal, color: '#6366F1', pays: 'Sénégal', desc: 'Cabinet d\'audit et de conseil basé au Sénégal. Partenaire référent AccounTech AI pour l\'audit et le conseil.' },
+              { abbr: 'LYSO2', logo: null,       name: 'LYSO — Lead Your Software', flagImg: flagMaroc,   color: '#C1272D', pays: 'Maroc',   desc: 'Éditeur ERP marocain basé à Casablanca. Partenaire exclusif d\'AccounTech AI pour le déploiement au Maroc — facturation électronique, FEG et intégration SAGE.', contact: { nom: 'M. Jdiaa', email: 'jdia@trisoft-maroc.com', email2: 'jdiatrisoft@gmail.com', adresse: 'Centre Riad 61, Angle Avenue LALLA YACOUT et MOSTAFA EL MAANI, N°69 2ème étage, Casablanca' } },
+            ].map(({ abbr, logo, name, flagImg, color, pays, desc, contact }) => (
+              <div key={abbr} style={{
+                width: 310, flexShrink: 0, marginRight: 22,
+                background: '#fff', border: `1px solid ${C.border}`, borderRadius: 18,
+                padding: 24, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 14,
+                boxShadow: '0 2px 16px rgba(0,0,0,.06)',
+                transition: 'box-shadow .25s, border-color .25s, transform .25s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 12px 40px ${color}18`; e.currentTarget.style.borderColor = `${color}50`; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 2px 16px rgba(0,0,0,.06)'; e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = 'none'; }}
+              >
+                {/* En-tête logo + nom */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 13 }}>
+                  <div style={{
+                    width: 60, height: 60, borderRadius: 14, flexShrink: 0, overflow: 'hidden',
+                    background: `linear-gradient(135deg,${color}18,${color}06)`,
+                    border: `1.5px solid ${color}30`,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    {logo
+                      ? <LogoImg src={logo} fallback={abbr.replace(/\d/g,'')} color={color} />
+                      : <span style={{ fontSize: 11, fontWeight: 900, color, textAlign: 'center', lineHeight: 1.1, padding: '0 4px' }}>{abbr.replace(/\d/g,'')}</span>
+                    }
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 14.5, fontWeight: 800, color: C.text, marginBottom: 4, lineHeight: 1.25 }}>{name}</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color, fontWeight: 600 }}>
+                      <img src={flagImg} alt={pays} style={{ width: 18, height: 13, objectFit: 'cover', borderRadius: 2 }} />
+                      {pays}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.65, flex: 1 }}>{desc}</p>
+
+                {/* Bloc contact LYSO */}
+                {contact && (
+                  <div style={{ width: '100%', background: `${color}07`, border: `1px solid ${color}20`, borderRadius: 10, padding: '11px 13px', display: 'flex', flexDirection: 'column', gap: 5 }}>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: C.muted, textTransform: 'uppercase', letterSpacing: '.5px' }}>Contact Maroc</div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: C.text }}>{contact.nom}</div>
+                    <a href={`mailto:${contact.email}`} style={{ fontSize: 12, color, fontWeight: 600, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <Mail size={11} color={color} />{contact.email}
+                    </a>
+                    <a href={`mailto:${contact.email2}`} style={{ fontSize: 12, color, fontWeight: 600, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <Mail size={11} color={color} />{contact.email2}
+                    </a>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 5, fontSize: 11, color: C.muted, lineHeight: 1.5 }}>
+                      <MapPin size={11} color={C.muted} style={{ flexShrink: 0, marginTop: 1 }} />{contact.adresse}
+                    </div>
+                  </div>
+                )}
+
+                {/* Badge partenaire certifié */}
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, color, background: `${color}10`, border: `1px solid ${color}25`, padding: '4px 12px', borderRadius: 20 }}>
+                  <Check size={10} color={color} /> Partenaire certifié
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1045,11 +1374,29 @@ function Garanties() {
 // ═══════════════════════════════════════════════════════════════════════════════
 // ÉQUIPE
 // ═══════════════════════════════════════════════════════════════════════════════
+function TeamAvatar({ photo, ini, color }) {
+  const [err, setErr] = useState(false);
+  if (!err && photo) {
+    return (
+      <img
+        src={photo} alt={ini}
+        onError={() => setErr(true)}
+        style={{ width: 88, height: 88, borderRadius: '50%', objectFit: 'cover', border: `3px solid ${color}`, boxShadow: `0 0 0 6px ${color}18`, marginBottom: 14, display: 'block' }}
+      />
+    );
+  }
+  return (
+    <div style={{ width: 88, height: 88, borderRadius: '50%', background: `${color}20`, border: `3px solid ${color}`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14, fontSize: 26, fontWeight: 900, color, boxShadow: `0 0 0 6px ${color}18` }}>
+      {ini}
+    </div>
+  );
+}
+
 function Equipe() {
   const membres = [
-    { ini: 'MS', nom: 'Mouhamadout Mansour Soe', role: 'Expert Comptable Stagiaire', pays: '🇸🇳 Sénégal', color: C.green,   specialite: 'Comptabilité & Fiscalité',   bio: 'Expert en normes SYSCOHADA et fiscalité sénégalaise. Référent métier pour le module comptabilité, les déclarations fiscales et la conformité CGI 2025.' },
-    { ini: 'KT', nom: 'Khadim Touré',            role: 'Développeur IA',             pays: '🇸🇳 Sénégal', color: C.teal,    specialite: 'Intelligence Artificielle', bio: "Architecte de l'IA Mansour. Développe les modèles d'extraction OCR, de reconnaissance comptable, l'assistant vocal et l'interface produit." },
-    { ini: 'MA', nom: 'Marc',                    role: 'Expert Comptable Stagiaire', pays: "🇨🇮 Côte d'Ivoire", color: '#F59E0B', specialite: 'Fiscalité ivoirienne',      bio: "Spécialiste des pratiques comptables et fiscales ivoiriennes. Coordonne l'adaptation d'AccounTech AI pour le marché de Côte d'Ivoire." },
+    { ini: 'MS', photo: mansourPhoto,  nom: 'Mouhamadou Mansour Sow',  role: 'Expert Comptable Stagiaire', pays: '🇸🇳 Sénégal',       color: C.green,   specialite: 'Comptabilité & Fiscalité',   bio: 'Expert en normes SYSCOHADA et fiscalité sénégalaise. Référent métier pour le module comptabilité, les déclarations fiscales et la conformité CGI 2025.' },
+    { ini: 'JM', photo: marcPhoto,     nom: 'J. Marc Arthur KOUASSI',  role: 'Expert Comptable Stagiaire', pays: "🇨🇮 Côte d'Ivoire", color: '#F59E0B', specialite: 'Fiscalité ivoirienne',      bio: "Spécialiste des pratiques comptables et fiscales ivoiriennes. Coordonne l'adaptation d'AccounTech AI pour le marché de Côte d'Ivoire." },
+    { ini: 'KT', photo: khadimPhoto,   nom: 'Khadim Touré',            role: 'Développeur IA',             pays: '🇸🇳 Sénégal',       color: C.teal,    specialite: 'Intelligence Artificielle', bio: "Architecte de l'IA Mansour. Développe les modèles d'extraction OCR, de reconnaissance comptable, l'assistant vocal et l'interface produit." },
   ];
 
   return (
@@ -1057,15 +1404,13 @@ function Equipe() {
       <div className="ct">
         <A><SHead badge="L'équipe" title="Les experts derrière AccounTech AI" sub="Une équipe pluridisciplinaire alliant expertise comptable africaine et ingénierie IA." /></A>
         <div className="g3">
-          {membres.map(({ ini, nom, role, pays, color, specialite, bio }, i) => (
+          {membres.map(({ ini, photo, nom, role, pays, color, specialite, bio }, i) => (
             <A key={nom} delay={i * 120}>
               <div className="card" style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 {/* Gradient header strip */}
-                <div style={{ background: `linear-gradient(135deg,${color}28,${color}10)`, padding: '28px 28px 20px', borderBottom: `1px solid ${color}18`, position: 'relative', overflow: 'hidden' }}>
-                  <div style={{ position: 'absolute', top: -18, right: -18, width: 80, height: 80, borderRadius: '50%', background: `${color}14`, pointerEvents: 'none' }} />
-                  <div style={{ width: 72, height: 72, borderRadius: '50%', background: `${color}20`, border: `3px solid ${color}`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14, fontSize: 22, fontWeight: 900, color, boxShadow: `0 0 0 8px ${color}0E` }}>
-                    {ini}
-                  </div>
+                <div style={{ background: `linear-gradient(135deg,${color}22,${color}08)`, padding: '28px 28px 20px', borderBottom: `1px solid ${color}18`, position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                  <div style={{ position: 'absolute', top: -18, right: -18, width: 80, height: 80, borderRadius: '50%', background: `${color}10`, pointerEvents: 'none' }} />
+                  <TeamAvatar photo={photo} ini={ini} color={color} />
                   <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: 10, fontWeight: 700, color, background: `${color}14`, border: `1px solid ${color}28`, padding: '2px 10px', borderRadius: 20, marginBottom: 10, textTransform: 'uppercase', letterSpacing: '.3px' }}>
                     <Award size={10} color={color} /> {specialite}
                   </div>
@@ -1102,7 +1447,7 @@ function Contact() {
   };
 
   const infos = [
-    { Icon: Mail,   label: 'Email',    val: 'khadimt660@gmail.com',     href: 'mailto:khadimt660@gmail.com' },
+    { Icon: Mail,   label: 'Email',    val: 'sowmansour@accountech-ai.com',     href: 'mailto:sowmansour@accountech-ai.com' },
     { Icon: Phone,  label: 'Téléphone',val: '+221 77 586 08 29',         href: 'tel:+221775860829' },
     { Icon: MapPin, label: 'Adresse',  val: 'Dakar, Sénégal',            href: '#' },
     { Icon: Clock,  label: 'Horaires', val: 'Lun – Ven · 9h00 – 18h00', href: '#' },
@@ -1198,7 +1543,7 @@ function CTAFinal() {
               </span>
               <h2 style={{ fontSize: 'clamp(26px,4.5vw,52px)', fontWeight: 900, color: '#fff', marginBottom: 16, letterSpacing: '-.5px', lineHeight: 1.1 }}>Essayez AccounTech AI gratuitement</h2>
               <p style={{ fontSize: 17, color: 'rgba(255,255,255,.7)', lineHeight: 1.75, maxWidth: 460, margin: '0 auto 40px' }}>
-                Rejoignez 50+ cabinets et PME du Sénégal. Onboarding guidé par notre équipe.
+                Rejoignez 5+ cabinets et PME du Sénégal. Onboarding guidé par notre équipe.
               </p>
               <a href="https://sccountechia.com/login"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: '#fff', color: C.primary, padding: '16px 38px', borderRadius: 12, textDecoration: 'none', fontSize: 17, fontWeight: 700, boxShadow: '0 8px 30px rgba(0,0,0,.2)', transition: 'all .22s' }}
@@ -1228,12 +1573,10 @@ function Footer() {
         <div className="g4" style={{ marginBottom: 48 }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <div style={{ width: 34, height: 34, borderRadius: 9, background: GRAD, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ color: '#fff', fontWeight: 900, fontSize: 18 }}>A</span>
-              </div>
+              <img src={logoAccountech} alt="AccounTech AI" style={{ width: 34, height: 34, borderRadius: 9, objectFit: 'contain', background:'#fff' }} />
               <span style={{ color: '#fff', fontWeight: 800, fontSize: 17 }}>AccounTech <span style={{ color: C.tealLt }}>AI</span></span>
             </div>
-            <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,.36)', lineHeight: 1.75, maxWidth: 220, marginBottom: 18 }}>La comptabilité automatisée pour les PME sénégalaises.</p>
+            <p style={{ fontSize: 13.5, color: 'rgba(255,255,255,.36)', lineHeight: 1.75, maxWidth: 220, marginBottom: 18 }}>La comptabilité automatisée pour les PME.</p>
             <div style={{ display: 'flex', gap: 7, flexWrap: 'wrap' }}>
               {['SYSCOHADA','CGI 2025','OHADA','Odoo'].map(b => (
                 <span key={b} style={{ fontSize: 11, fontWeight: 700, padding: '3px 9px', borderRadius: 5, background: `${C.teal}16`, border: `1px solid ${C.teal}28`, color: C.tealLt }}>{b}</span>
@@ -1242,7 +1585,7 @@ function Footer() {
           </div>
           <div>
             <h4 style={{ color: '#fff', fontSize: 12, fontWeight: 700, letterSpacing: '.6px', textTransform: 'uppercase', marginBottom: 18 }}>Produit</h4>
-            {[['IA Mansour','#ia-mansour'],['Pour qui ?','#pour-qui'],['Comment ça marche','#comment'],['Garanties','#garanties']].map(([l,h]) => (
+            {[['IA Mansour','#ia-mansour'],['Pour qui ?','#pour-qui'],['Tarifs','#pricing'],['Comment ça marche','#comment'],['Garanties','#garanties']].map(([l,h]) => (
               <a key={l} href={h} style={ls} {...hv}>{l}</a>
             ))}
           </div>
@@ -1255,7 +1598,7 @@ function Footer() {
           <div>
             <h4 style={{ color: '#fff', fontSize: 12, fontWeight: 700, letterSpacing: '.6px', textTransform: 'uppercase', marginBottom: 18 }}>Contact</h4>
             <div style={{ fontSize: 14, color: 'rgba(255,255,255,.38)', lineHeight: 1.9 }}>
-              <a href="mailto:khadimt660@gmail.com" style={{ color: C.tealLt, textDecoration: 'none', display: 'block', marginBottom: 6 }}>khadimt660@gmail.com</a>
+              <a href="mailto:sowmansour@accountech-ai.com" style={{ color: C.tealLt, textDecoration: 'none', display: 'block', marginBottom: 6 }}>sowmansour@accountech-ai.com</a>
               <a href="tel:+221775860829" style={{ color: 'rgba(255,255,255,.38)', textDecoration: 'none', display: 'block', marginBottom: 6 }}>+221 77 586 08 29</a>
               <span style={{ display: 'block' }}>Dakar, Sénégal</span>
               <span style={{ display: 'block', fontSize: 13 }}>Lun – Ven · 9h – 18h</span>
@@ -1289,6 +1632,7 @@ export default function Landing() {
       <Navbar />
       <Hero />
       <Stats />
+      <VideoDemo />
       <Problemes />
       <PourQui />
       <Wave from={C.bgGray} to={C.hero} />
@@ -1296,9 +1640,7 @@ export default function Landing() {
       <Wave from={C.hero} to={C.bgGray} />
       <HowItWorks />
       <Differenciateurs />
-      <Wave from={C.bg} to={C.dark2} />
-      <Avis />
-      <Wave from={C.dark2} to={C.bg} />
+      <Pricing />
       <CabinetsPartenaires />
       <Garanties />
       <Equipe />

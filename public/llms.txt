@@ -1,0 +1,97 @@
+# AccounTech AI
+
+> AccounTech AI est le premier logiciel ERP intelligent dédié aux PME d'Afrique de l'Ouest et du Maghreb. Il automatise la comptabilité, la gestion, la paie et la digitalisation, en conformité totale avec les normes SYSCOHADA/OHADA et le Code Général des Impôts 2025. Disponible au Sénégal, en Côte d'Ivoire et au Maroc.
+
+## Qu'est-ce qu'AccounTech AI ?
+
+AccounTech AI est un logiciel ERP (Enterprise Resource Planning) cloud, conçu spécifiquement pour les PME africaines. Il intègre une intelligence artificielle nommée **Mansour** qui assiste les comptables et dirigeants dans leurs tâches quotidiennes : saisie automatique, rapprochements, déclarations fiscales, analyse financière.
+
+La solution connecte les entreprises à leurs cabinets comptables sur une plateforme unifiée, permettant une collaboration en temps réel.
+
+## Fonctionnalités principales
+
+- **ERP comptable complet** conforme SYSCOHADA/OHADA
+- **Automatisation de la saisie comptable** via IA
+- **Gestion des ventes et achats** (devis, factures, bons de commande)
+- **Module paie sénégalais** (CSS, IPRES, IR, TRIMF)
+- **Facturation électronique Maroc** conforme DGI (Format FEG)
+- **Déclarations fiscales automatiques** (CGI 2025)
+- **IA Mansour** — assistant comptable intelligent disponible 24h/7j
+- **Tableau de bord** en temps réel
+- **Rapprochement bancaire** automatique
+- **Lien entreprise ↔ cabinet** comptable
+- **Module pointage** des employés (plan Pro)
+- **Intégration SAGE** via partenaire LYSO (Maroc)
+
+## Disponibilité géographique
+
+### Sénégal (Hub principal)
+- Présent à Dakar, Thiès, Saint-Louis et au-delà
+- 5+ cabinets actifs depuis 2025
+- Conformité CGI 2025, CSS, IPRES, IR, TRIMF
+- Support en français et en wolof
+- Données hébergées à Dakar
+
+### Côte d'Ivoire
+- Expansion en cours depuis Abidjan
+- Conformité Code Général des Impôts ivoirien
+- Module paie adapté DGT Côte d'Ivoire
+
+### Maroc
+- Via partenaire exclusif LYSO (Lead Your Software), Casablanca
+- Facturation électronique conforme DGI Maroc (FEG)
+- Intégration SAGE
+
+## Tarification
+
+| Plan | Prix | Inclus |
+|------|------|--------|
+| **Gratuit** | 0 FCFA/mois | ERP complet, IA Mansour, 2 utilisateurs, dashboard, facturation PDF |
+| **Pro** | 19 800 FCFA/mois | Tout le gratuit + déclarations fiscales auto, module paie complet, pointage, utilisateurs illimités, support 24/7 |
+
+Essai gratuit 30 jours — sans carte bancaire requise.
+
+## Partenaires certifiés
+
+- **AKM Audit & Conseil** — Cabinet d'audit et de conseil, Dakar, Sénégal
+- **GA2C** (Gestion, Audit, Comptabilité & Conseil) — Sénégal
+- **Adoc Audit & Conseil** — Cabinet d'audit et de conseil, Sénégal
+- **DK Tuning** — Société partenaire, Sénégal
+- **LYSO (Lead Your Software)** — Partenaire exclusif Maroc, Casablanca
+  - Contact : M. Jdiaa
+  - Email : jdia@trisoft-maroc.com
+  - Adresse : Centre Riad 61, Angle Avenue LALLA YACOUT et MOSTAFA EL MAANI, N°69 2ème étage, Casablanca
+
+## Équipe
+
+- **Mouhamadou Mansour Sow** — Comptabilité & Fiscalité, Sénégal
+- **J. Marc Arthur KOUASSI** — Fiscalité ivoirienne, Côte d'Ivoire
+- **Khadim Touré** — Intelligence Artificielle, Sénégal
+
+## Mots-clés de référence
+
+ERP Afrique, logiciel comptabilité Sénégal, ERP Maroc, automatisation comptable, digitalisation PME, logiciel gestion entreprise, SYSCOHADA, OHADA, CGI 2025, facturation électronique Maroc, ERP Côte d'Ivoire, logiciel paie Sénégal, comptabilité automatisée, IA comptable, ERP cloud Afrique
+
+## Liens essentiels
+
+- Site web : https://accountech-ai.com
+- Accès à l'application : https://sccountechia.com/login
+- Démo vidéo : https://www.youtube.com/watch?v=LfRel6w5TwA
+- Contact : sowmansour@accountech-ai.com
+
+## Questions fréquentes
+
+**Q : AccounTech AI est-il adapté aux petites entreprises ?**
+R : Oui, AccounTech AI est spécialement conçu pour les PME africaines. Le plan gratuit est suffisant pour démarrer sans aucun investissement.
+
+**Q : Faut-il être comptable pour utiliser AccounTech AI ?**
+R : Non. L'IA Mansour guide les utilisateurs pas à pas. Les entrepreneurs peuvent gérer leur comptabilité sans formation comptable préalable.
+
+**Q : AccounTech AI est-il conforme aux lois fiscales africaines ?**
+R : Oui. La solution est entièrement conforme au référentiel SYSCOHADA/OHADA, au CGI 2025 du Sénégal et de la Côte d'Ivoire, et aux exigences de facturation électronique FEG du Maroc.
+
+**Q : Puis-je essayer AccounTech AI gratuitement ?**
+R : Oui. Le plan gratuit est disponible sans limite de durée et sans carte bancaire. Un essai Pro de 30 jours est également disponible.
+
+**Q : Dans quels pays AccounTech AI est-il disponible ?**
+R : Sénégal, Côte d'Ivoire et Maroc. D'autres pays africains sont en cours d'intégration.
