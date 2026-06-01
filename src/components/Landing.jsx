@@ -380,8 +380,13 @@ function Navbar() {
                 onMouseLeave={e => e.currentTarget.style.color = sc ? C.sub : 'rgba(255,255,255,.82)'}
               >{l}</a>
             ))}
+            <a href="/token"
+              style={{ marginLeft: 4, display: 'flex', alignItems: 'center', gap: 6, color: sc ? C.gold : '#FFD580', textDecoration: 'none', fontSize: 13.5, fontWeight: 700, padding: '7px 13px', borderRadius: 8, border: `1px solid ${sc ? C.gold + '40' : 'rgba(255,213,128,.35)'}`, background: sc ? `${C.gold}10` : 'rgba(255,213,128,.08)', transition: 'all .2s' }}
+              onMouseEnter={e => { e.currentTarget.style.background = `${C.gold}20`; e.currentTarget.style.color = C.gold; }}
+              onMouseLeave={e => { e.currentTarget.style.background = sc ? `${C.gold}10` : 'rgba(255,213,128,.08)'; e.currentTarget.style.color = sc ? C.gold : '#FFD580'; }}
+            >🪙 Token ADOC</a>
             <a href="https://sccountechia.com/login"
-              style={{ marginLeft: 10, background: GRAD, color: '#fff', padding: '9px 20px', borderRadius: 9, textDecoration: 'none', fontSize: 14, fontWeight: 700, transition: 'opacity .2s, transform .2s' }}
+              style={{ marginLeft: 8, background: GRAD, color: '#fff', padding: '9px 20px', borderRadius: 9, textDecoration: 'none', fontSize: 14, fontWeight: 700, transition: 'opacity .2s, transform .2s' }}
               onMouseEnter={e => { e.currentTarget.style.opacity = '.88'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'none'; }}
             >Accès gratuit</a>
@@ -400,6 +405,10 @@ function Navbar() {
                 {l}
               </a>
             ))}
+            <a href="/token" onClick={() => setOpen(false)}
+              style={{ display: 'flex', alignItems: 'center', gap: 8, color: C.gold, textDecoration: 'none', padding: '12px 0', fontSize: 16, fontWeight: 700, borderBottom: `1px solid ${C.border}` }}>
+              🪙 Token ADOC
+            </a>
             <a href="https://sccountechia.com/login"
               style={{ display: 'block', marginTop: 16, background: GRAD, color: '#fff', padding: 13, borderRadius: 10, textDecoration: 'none', fontSize: 16, fontWeight: 700, textAlign: 'center' }}>
               Accès gratuit
@@ -415,7 +424,7 @@ function Navbar() {
 // HERO — 2 colonnes : texte | mockup
 // ═══════════════════════════════════════════════════════════════════════════════
 function Hero() {
-  const words = ['conforme SYSCOHADA'];
+  const words = ['conforme'];
   const tw = useTypewriter(words);
 
   return (
@@ -473,7 +482,7 @@ function Hero() {
                 {tw}<span style={{ animation: 'blink 1s step-end infinite' }}>|</span>
               </span>
               <br />pour les PME<br />
-              <span style={{ color: C.tealLt }}>sénégalaises</span>
+              <span style={{ color: C.tealLt }}>les Cabinets</span>
             </h1>
           </A>
 
@@ -1079,10 +1088,11 @@ function Differenciateurs() {
 function Pricing() {
   const plans = [
     {
-      name: 'Gratuit',
+      name: 'Freemium',
       price: '0',
       unit: 'FCFA / mois',
       tag: 'Pour démarrer',
+      badge: null,
       color: C.teal,
       grad: `linear-gradient(135deg,${C.teal}18,${C.green}08)`,
       highlight: false,
@@ -1092,32 +1102,58 @@ function Pricing() {
         'Dashboard chiffre d\'affaires',
         'Rapprochement bancaire',
         'Facturation PDF automatique',
-        'Lien entreprise ↔ cabinet',
         'IA Mansour — assistant comptable',
+        '30 opérations automatisées / mois',
         'Accès multi-utilisateurs (2)',
       ],
+      note: 'Quota mensuel · Rechargez avec des tokens ADOC pour continuer',
       cta: 'Commencer gratuitement',
       ctaHref: 'https://sccountechia.com/login',
     },
     {
-      name: 'Pro',
-      price: '19 800',
-      unit: 'FCFA / mois',
-      tag: 'Fonctionnalités avancées',
+      name: 'Pay-As-You-Go',
+      price: 'ADOC',
+      unit: 'par opération',
+      tag: 'Flexibilité totale',
+      badge: null,
+      color: '#F59E0B',
+      grad: 'linear-gradient(135deg,#F59E0B20,#F59E0B08)',
+      highlight: false,
+      features: [
+        'Tout le plan Freemium inclus',
+        'Agents IA illimités (solde ADOC positif)',
+        'Achat de packs de tokens ADOC in-app',
+        'Zéro frais si aucune activité',
+        'Déclarations fiscales automatiques',
+        'Module de pointage des employés',
+        'Export journaux multi-formats',
+        'Lien entreprise ↔ cabinet',
+      ],
+      note: 'Chaque écriture validée consomme une fraction de token ADOC',
+      cta: 'Acheter des tokens ADOC',
+      ctaHref: 'https://sccountechia.com/login',
+    },
+    {
+      name: 'Premium',
+      price: 'Forfait',
+      unit: 'mensuel en ADOC',
+      tag: 'Entreprises & Cabinets',
+      badge: 'RECOMMANDÉ',
       color: '#6366F1',
       grad: 'linear-gradient(135deg,#6366F128,#8B5CF610)',
       highlight: true,
       features: [
-        'Tout le plan Gratuit inclus',
-        'Déclarations fiscales automatiques (CGI 2025)',
-        'Module de pointage des employés',
-        'Personnalisation des fonctionnalités',
-        'Module paie complet (CSS, IPRES, IR, TRIMF)',
-        'Export journaux multi-formats',
+        'Tout le plan Pay-As-You-Go inclus',
+        'Conversion automatique FCFA → ADOC',
         'Accès multi-utilisateurs illimité',
+        'Module paie complet (CSS, IPRES, IR, TRIMF)',
+        'Personnalisation des fonctionnalités',
+        'Tokens ADOC verrouillés & rechargés auto',
         'Support prioritaire 24/7',
+        'Tableau de bord cabinet multi-clients',
       ],
-      cta: 'Essayer Pro',
+      note: 'Paiement en FCFA · Conversion ADOC transparente en arrière-plan',
+      cta: 'Contacter l\'équipe',
       ctaHref: 'https://sccountechia.com/login',
     },
   ];
@@ -1125,38 +1161,59 @@ function Pricing() {
   return (
     <section id="pricing" className="s" style={{ background: C.bgGray }}>
       <div className="ct">
-        <A><SHead badge="Tarifs" title="Simple, transparent, accessible" sub="L'ERP est gratuit. Passez Pro pour les déclarations fiscales automatiques et le module pointage." /></A>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 28, maxWidth: 780, margin: '0 auto' }}>
-          {plans.map(({ name, price, unit, tag, color, grad, highlight, features, cta, ctaHref }, i) => (
+        <A><SHead badge="Tarifs" title="Freemium Web3 — Propulsé par le token ADOC" sub="Démarrez gratuitement. Payez uniquement ce que vous consommez en tokens ADOC, ou optez pour un forfait mensuel avec conversion automatique." /></A>
+
+        {/* Token ADOC explainer */}
+        <A delay={60}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, background: 'linear-gradient(135deg,#6366F112,#F59E0B08)', border: '1px solid #6366F130', borderRadius: 16, padding: '14px 22px', maxWidth: 820, margin: '0 auto 36px', flexWrap: 'wrap' }}>
+            <div style={{ fontSize: 28 }}>🪙</div>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: '#6366F1', marginBottom: 8 }}>Libérez-vous des abonnements rigides. Nos agents IA fonctionnent sur la base du Token ADOC.</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <div style={{ fontSize: 13, color: C.sub, lineHeight: 1.6 }}><span style={{ fontWeight: 700, color: C.text }}>Consommation transparente :</span> Vos interactions (facturation, suivi de caisse, saisie automatique) déduisent directement des fractions de tokens de votre solde.</div>
+                <div style={{ fontSize: 13, color: C.sub, lineHeight: 1.6 }}><span style={{ fontWeight: 700, color: C.text }}>Recharge en un clic :</span> Une fois votre crédit gratuit épuisé, achetez simplement vos tokens ADOC depuis votre espace client pour continuer à piloter votre entreprise à la voix ou par écrit.</div>
+              </div>
+            </div>
+          </div>
+        </A>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 24, maxWidth: 1020, margin: '0 auto' }}>
+          {plans.map(({ name, price, unit, tag, badge, color, grad, highlight, features, note, cta, ctaHref }, i) => (
             <A key={name} delay={i * 120}>
               <div style={{
-                background: highlight ? '#fff' : '#fff',
+                background: '#fff',
                 border: highlight ? `2px solid ${color}` : `1px solid ${C.border}`,
                 borderRadius: 22, overflow: 'hidden', height: '100%',
                 boxShadow: highlight ? `0 20px 60px ${color}20` : '0 4px 20px rgba(0,0,0,.06)',
                 position: 'relative',
                 transition: 'transform .25s, box-shadow .25s',
+                display: 'flex', flexDirection: 'column',
               }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = highlight ? `0 28px 72px ${color}30` : `0 16px 48px rgba(0,0,0,.1)`; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = highlight ? `0 20px 60px ${color}20` : '0 4px 20px rgba(0,0,0,.06)'; }}
               >
-                {highlight && (
+                {badge && (
                   <div style={{ position: 'absolute', top: 18, right: 18, background: color, color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 12px', borderRadius: 20, letterSpacing: '.3px' }}>
-                    RECOMMANDÉ
+                    {badge}
                   </div>
                 )}
-                <div style={{ background: grad, padding: '32px 30px 24px', borderBottom: `1px solid ${color}20` }}>
+                <div style={{ background: grad, padding: '32px 28px 22px', borderBottom: `1px solid ${color}20` }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: 10 }}>{tag}</div>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: C.text, marginBottom: 4, letterSpacing: '-.5px' }}>{name}</div>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: C.text, marginBottom: 6, letterSpacing: '-.5px' }}>{name}</div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-                    <span style={{ fontSize: 42, fontWeight: 900, color, lineHeight: 1, letterSpacing: '-2px' }}>{price}</span>
-                    <span style={{ fontSize: 14, color: C.muted, fontWeight: 500 }}>{unit}</span>
+                    <span style={{ fontSize: price === 'ADOC' || price === 'Forfait' ? 28 : 40, fontWeight: 900, color, lineHeight: 1, letterSpacing: price === 'ADOC' || price === 'Forfait' ? '-.5px' : '-2px' }}>{price}</span>
+                    <span style={{ fontSize: 13, color: C.muted, fontWeight: 500 }}>{unit}</span>
                   </div>
                 </div>
-                <div style={{ padding: '24px 30px 30px' }}>
-                  <div style={{ marginBottom: 24 }}>
+                <div style={{ padding: '22px 28px 28px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ flex: 1, marginBottom: 16 }}>
                     {features.map(f => <CheckItem key={f} text={f} color={color} />)}
                   </div>
+                  {note && (
+                    <div style={{ fontSize: 12, color: C.muted, background: `${color}0a`, border: `1px solid ${color}20`, borderRadius: 8, padding: '8px 12px', marginBottom: 16, lineHeight: 1.5 }}>
+                      {note}
+                    </div>
+                  )}
                   <a href={ctaHref}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
@@ -1178,7 +1235,7 @@ function Pricing() {
         </div>
         <A delay={200}>
           <p style={{ textAlign: 'center', marginTop: 28, fontSize: 13.5, color: C.muted }}>
-            Aucune carte bancaire requise pour le plan gratuit · Résiliable à tout moment · Prix en FCFA
+            Aucune carte bancaire requise · Sans engagement · Paiement en FCFA ou tokens ADOC · Résiliable à tout moment
           </p>
         </A>
       </div>

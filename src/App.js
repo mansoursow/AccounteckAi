@@ -1,8 +1,16 @@
-import "./App.css";
-import Landing from "./components/Landing";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Landing   from './components/Landing';
+import TokenPage from './components/TokenPage';
 
 function App() {
-  return <Landing />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"      element={<Landing />} />
+        <Route path="/token" element={<TokenPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
