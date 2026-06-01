@@ -1451,9 +1451,9 @@ function TeamAvatar({ photo, ini, color }) {
 
 function Equipe() {
   const membres = [
-    { ini: 'MS', photo: mansourPhoto,  nom: 'Mouhamadou Mansour Sow',  role: 'Expert Comptable Stagiaire', pays: '🇸🇳 Sénégal',       color: C.green,   specialite: 'Comptabilité & Fiscalité',   bio: 'Expert en normes SYSCOHADA et fiscalité sénégalaise. Référent métier pour le module comptabilité, les déclarations fiscales et la conformité CGI 2025.' },
-    { ini: 'JM', photo: marcPhoto,     nom: 'J. Marc Arthur KOUASSI',  role: 'Expert Comptable Stagiaire', pays: "🇨🇮 Côte d'Ivoire", color: '#F59E0B', specialite: 'Fiscalité ivoirienne',      bio: "Spécialiste des pratiques comptables et fiscales ivoiriennes. Coordonne l'adaptation d'AccounTech AI pour le marché de Côte d'Ivoire." },
-    { ini: 'KT', photo: khadimPhoto,   nom: 'Khadim Touré',            role: 'Développeur IA',             pays: '🇸🇳 Sénégal',       color: C.teal,    specialite: 'Intelligence Artificielle', bio: "Architecte de l'IA Mansour. Développe les modèles d'extraction OCR, de reconnaissance comptable, l'assistant vocal et l'interface produit." },
+    { ini: 'MS', photo: mansourPhoto,  nom: 'Mouhamadou Mansour Sow',  role: 'Expert Comptable Stagiaire', pays: '🇸🇳 Sénégal',       color: C.green,   specialite: 'Comptabilité & Fiscalité',   bio: 'Expert en normes SYSCOHADA et fiscalité sénégalaise. Référent métier pour le module comptabilité, les déclarations fiscales et la conformité CGI 2025.',    linkedin: 'https://www.linkedin.com/in/mouhamadou-mansour-sow-539775110/' },
+    { ini: 'JM', photo: marcPhoto,     nom: 'J. Marc Arthur KOUASSI',  role: 'Expert Comptable Stagiaire', pays: "🇨🇮 Côte d'Ivoire", color: '#F59E0B', specialite: 'Fiscalité ivoirienne',      bio: "Spécialiste des pratiques comptables et fiscales ivoiriennes. Coordonne l'adaptation d'AccounTech AI pour le marché de Côte d'Ivoire.",                    linkedin: 'https://www.linkedin.com/in/j-marc-arthur-kouassi-071906109/' },
+    { ini: 'KT', photo: khadimPhoto,   nom: 'Khadim Touré',            role: 'Développeur IA',             pays: '🇸🇳 Sénégal',       color: C.teal,    specialite: 'Intelligence Artificielle', bio: "Architecte de l'IA Mansour. Développe les modèles d'extraction OCR, de reconnaissance comptable, l'assistant vocal et l'interface produit.",               linkedin: 'https://www.linkedin.com/in/khadim-toure-024a41246/' },
   ];
 
   return (
@@ -1461,7 +1461,7 @@ function Equipe() {
       <div className="ct">
         <A><SHead badge="L'équipe" title="Les experts derrière AccounTech AI" sub="Une équipe pluridisciplinaire alliant expertise comptable africaine et ingénierie IA." /></A>
         <div className="g3">
-          {membres.map(({ ini, photo, nom, role, pays, color, specialite, bio }, i) => (
+          {membres.map(({ ini, photo, nom, role, pays, color, specialite, bio, linkedin }, i) => (
             <A key={nom} delay={i * 120}>
               <div className="card" style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 {/* Gradient header strip */}
@@ -1478,6 +1478,19 @@ function Equipe() {
                 {/* Bio */}
                 <div style={{ padding: '20px 24px', flex: 1 }}>
                   <p style={{ fontSize: 14, color: C.sub, lineHeight: 1.78 }}>{bio}</p>
+                </div>
+                {/* LinkedIn */}
+                <div style={{ padding: '0 24px 20px' }}>
+                  <a href={linkedin} target="_blank" rel="noreferrer"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#0A66C214', border: '1px solid #0A66C230', color: '#0A66C2', textDecoration: 'none', fontSize: 13, fontWeight: 700, padding: '8px 16px', borderRadius: 9, transition: 'background .2s, transform .2s' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#0A66C222'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = '#0A66C214'; e.currentTarget.style.transform = 'none'; }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    Voir le profil LinkedIn
+                  </a>
                 </div>
               </div>
             </A>
