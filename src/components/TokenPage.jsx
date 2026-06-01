@@ -5,7 +5,7 @@ import {
   faArrowUpRightFromSquare, faDownload, faBook, faCartShopping,
   faWallet, faMobileScreen, faGlobe, faChartLine,
   faChevronDown, faChevronUp, faUsers, faChartBar, faFileLines,
-  faTriangleExclamation, faCircleCheck, faLayerGroup,
+  faCircleCheck, faLayerGroup,
   faFileAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import logoAccountech from '../assets/logo.png';
