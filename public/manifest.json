@@ -1,11 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "AccounTech AI",
+  "name": "AccounTech AI — ERP Comptabilité PME Afrique",
+  "description": "Logiciel ERP intelligent pour la comptabilité, la gestion et la digitalisation des PME africaines. Conforme SYSCOHADA & CGI 2025.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
     },
     {
       "src": "logo192.png",
@@ -18,8 +19,11 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#061E1C",
+  "background_color": "#061E1C",
+  "lang": "fr",
+  "scope": "/",
+  "categories": ["business", "finance", "productivity"]
 }

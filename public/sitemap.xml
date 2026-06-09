@@ -5,7 +5,7 @@
   <!-- Page principale (seule URL valide pour Google — les ancres # ne sont pas indexées) -->
   <url>
     <loc>https://accountech-ai.com/</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://accountech-ai.com/"/>
